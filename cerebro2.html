@@ -30,7 +30,7 @@
 
   <!-- Your new script -->
   <script>
-    var model = 'ab3459d600284da4ba9705b9761a18c6',
+    var model = '0b924d86cdbb464a92dc429c89c690e0',
 
     // Buttons
     buttonA = document.getElementById( 'keyA' ),
@@ -139,75 +139,6 @@
                   case "Pirámides": buttonL.innerHTML = " Pirámides "; buttonL.style.backgroundColor = "#888888"; api.hide(node_L); break;
                   case " Pirámides ": buttonL.innerHTML = "Pirámides"; buttonL.style.backgroundColor = "#1caad9"; api.show(node_L); break;
             } }); }
-
-            if (node_cerebro_caudal) {
-              buttonB.addEventListener( 'click', function() {
-                switch(buttonB.innerHTML) {
-                  case "Cerebro Caudal":
-                    buttonB.innerHTML = " Cerebro Caudal ";
-                    buttonB.style.backgroundColor = "#888888";
-                    api.hide(node_cerebro_caudal);
-                    break;
-                  case " Cerebro Caudal ":
-                    buttonB.innerHTML = "Cerebro Caudal";
-                    buttonB.style.backgroundColor = "#1caad9";
-                    api.show(node_cerebro_caudal);
-                    break;
-                }
-              });
-            }
-
-            if (node_corte_rostral) {
-              buttonC.addEventListener( 'click', function() {
-                switch(buttonC.innerHTML) {
-                  case "Corte Rostral":
-                    buttonC.innerHTML = " Corte Rostral ";
-                    buttonC.style.backgroundColor = "#888888";
-                    api.hide(node_corte_rostral);
-                    break;
-                  case " Corte Rostral ":
-                    buttonC.innerHTML = "Corte Rostral";
-                    buttonC.style.backgroundColor = "#1caad9";
-                    api.show(node_corte_rostral);
-                    break;
-                }
-              });
-            }
-
-
-            if (node_corte_caudal) {
-              buttonD.addEventListener( 'click', function() {
-                switch(buttonD.innerHTML) {
-                  case "Corte Caudal":
-                    buttonD.innerHTML = " Corte Caudal ";
-                    buttonD.style.backgroundColor = "#888888";
-                    api.hide(node_corte_caudal);
-                    break;
-                  case " Corte Caudal ":
-                    buttonD.innerHTML = "Corte Caudal";
-                    buttonD.style.backgroundColor = "#1caad9";
-                    api.show(node_corte_caudal);
-                    break;
-                }
-              });
-            }
-
-            if (node_cortes) {
-              buttonE.addEventListener( 'click', function() {
-                switch(buttonE.innerHTML) {
-                  case "Cortes":
-                    buttonE.innerHTML = " Cortes ";
-                    buttonE.style.backgroundColor = "#888888";
-                    api.hide(node_cortes);
-                    break;
-                  case " Cortes ":
-                    buttonE.innerHTML = "Cortes";
-                    buttonE.style.backgroundColor = "#1caad9";
-                    api.show(node_cortes);
-                    break;
-                }
-              });
-            }
 
           }
         });
