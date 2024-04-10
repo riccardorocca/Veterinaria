@@ -10,8 +10,11 @@ iframe {
 
 /* Para modificar posición y tamaño boton veterinaria UCM */
 .img-container1 {
-  width: 130px;
-
+  position: absolute;
+  margin: 0px 5px;
+  top: 45px;
+  width: 150px;
+  right: 0px;
 }
 
 /* Para modificar posición y tamaño Escudo UCM */
@@ -30,15 +33,15 @@ img {
 
 /* Button style, Para cambiar el estilo de los botones */
 .buttons {
+  position: absolute;
   margin: 35px 5px;
   right: 0;
-  top: 44px;
+  top: 45px;
   z-index: 1;
-  position: absolute;
 }
 
 button {
-  width: 130px;
+  width: 200px;
   height: 38px;
   line-height: 21px;
   text-transform: capitalize;
@@ -69,3 +72,5 @@ button:hover {
 button:active {
   font-weight: bold;
 }
+
+#keyM {height: 40px;}
