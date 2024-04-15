@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Higado</title> <!-- Nombre que queremos que salga en la pestaña del navegador -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <iframe style="position:fixed; width:100%; height:100%; border:0" src="" id="api-frame"
+    sandbox="allow-scripts allow-same-origin allow-popups allow-forms" allow="autoplay; fullscreen; vr" allowvr
+    allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+  <div class="img-container1"><img src="./assets/img/boton-vet-ucm.png"></div>
+  <div class="buttons"> <!--Estos son los botones que salen a la dch de la pantalla -->
+    <button class="showButton" id="keyA" onclick="showAndHide('Higado ed3', 'keyA')">Higado editado</button>
+    <button class="showButton" id="keyB" onclick="showAndHide('Esofago ed', 'keyB')">Esofago editado</button>
+    <button class="showButton" id="keyC" onclick="showAndHide('Vesicula ed', 'keyC')">Vesicula editada</button>
+    <button class="showButton" id="keyD" onclick="showAndHide('Higado', 'keyD')">Higado original</button>
+    <button class="showButton" id="keyE" onclick="showAndHide('Esofago', 'keyE')">Esofago original</button>
+    <button class="showButton" id="keyF" onclick="showAndHide('Vesicula', 'keyF')">Vesicula original</button>
+  </div>
+
+  <div class="img-container2"> <!-- logo esquina -->
+    <img src="./assets/img/logo-ucm.png">
+  </div>
+
+  <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.5.1.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
