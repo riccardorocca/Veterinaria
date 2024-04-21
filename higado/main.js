@@ -1,4 +1,4 @@
-const model = '3a931baaa7cb44679e0858fc402e4d06'; // Modelo de referencia a Sketchfab,este fichero cuando lo abres irá al modelo de ese código
+const model = 'b5d66094178143a99ce637d60b2a98e7'; // Modelo de referencia a Sketchfab,este fichero cuando lo abres irá al modelo de ese código
 
 const filteredNodes = {}; // Objeto para guardar nombres de nodos, y si se debe mostrar o no. Ejemplo --> { "A" : { show: true, instanceId: 4} }
 let apiRef; // Referencia a la api, para poder llamarla fuera del evetListener
