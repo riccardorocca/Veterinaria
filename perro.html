@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Endoscopia</title>
+
+  <!-- Insert this script -->
+  <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.5.1.js"></script>
+</head>
+
+<body>
+  <iframe style="position:fixed; width:100%; height:100%; border:0" src="" id="api-frame" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" allow="autoplay; fullscreen; vr" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+  <div class="buttons">
+    <img id="logo" src="https://riccardorocca.github.io/Veterinaria/logo.png">
+    <!-- <button id="keyA">Leyenda</button> -->
+    <button id="keyA">vista Frontal</button>
+    <button id="keyB">vista Derecha</button>
+    <button id="keyC">vista Posterior</button>
+    <button id="keyD">vista Izquierda</button>
+  </div>
+
+  <!-- Your new script -->
+  <script>
+    var model = 'd639f916f7c04bf1bb26a0efa1e39ce5',
+
+    // Buttons
+    buttonA = document.getElementById( 'keyA' ),
+    buttonB = document.getElementById( 'keyB' ),
+    buttonC = document.getElementById( 'keyC' ),
+    buttonD = document.getElementById( 'keyD' ),
+
+    // Variables
+    version = '1.7.1',
+    iframe = document.getElementById( 'api-frame' ),
+    client = new Sketchfab( version, iframe ),
+
+    error = function () {
+      console.error( 'Sketchfab API Error!' );
+    },
+
+    success = function( api ) {
+      api.start();
+      // Wait for viewer to be ready
+      api.addEventListener( 'viewerready', function() {
+        // Get the object nodes
+        api.getNodeMap( function ( err, nodes ) {
+          if ( !err ) {
+            for ( var prop in nodes ) {
+              if ( nodes.hasOwnProperty( prop ) ) {
+                //alert(nodes[prop].instanceID+" : "+nodes[prop].name+" : "+nodes[prop].nodeMask+" : "+nodes[prop].type+" : "+nodes[prop].localMatrix+" ; "+nodes[prop].worldMatrix);
+                if      ( nodes[ prop ].name === "perro" ) { var node_perro  = nodes[prop].instanceID; }
+              }
+            }
+
+            XYZ_head =  [      0, -1.89076, 0];
+            XYZ_left =  [1.31658, 0.019557, 0];
+            XYZ_tail =  [      0, 1.929870, 0];
+            XYZ_right = [-1.1738, 0.019557, 0];
+
+            buttonA.addEventListener( 'click', function() {
+                  api.setCameraLookAt(XYZ_head, XYZ_tail, 2);
+            });
+
+            buttonB.addEventListener( 'click', function() {
+                  api.setCameraLookAt(XYZ_right, XYZ_left, 2);
+            });
+
+            buttonC.addEventListener( 'click', function() {
+                  api.setCameraLookAt(XYZ_tail, XYZ_head, 2);
+            });
+
+            buttonD.addEventListener( 'click', function() {
+                  api.setCameraLookAt(XYZ_left, XYZ_right, 2);
+            });
+
+          }
+        });
+
+      });
+    };
+
+    // Load the model
+    client.init( model, {
+      success: success,
+      error: error,
+      ui_infos: 0,
+      ui_controls: 0,
+      ui_stop: 1,
+      watermark: 1,
+      supersample: 0
+    });
+
+  </script>
+
+  <!-- Lastly, some CSS -->
+  <style type="text/css">
+
+    body {
+      margin: 0;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    img {
+      width: 200px;
+      opacity: 0.8;
+    }
+
+    /* Button style */
+    .buttons {
+      margin: 35px 5px;
+      right: 0;
+      top:   0;
+      z-index: 1;
+      position: absolute;
+    }
+
+    button {
+      width: 200px;
+      height: 50px;
+      line-height: 21px;
+      text-transform: capitalize;
+      color: white;
+      opacity: 0.8;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      vertical-align: middle;
+      display: block;
+      margin-top: 2px;
+      background: #1caad9;
+    }
+
+    button:hover {opacity: 1;}
+    button:active {font-weight: bold;}
+
+  </style>
+</body>
