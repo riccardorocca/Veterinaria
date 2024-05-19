@@ -1,0 +1,229 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Intestino</title> <!-- Nombre que queremos que salga en la pestaña del navegador -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <iframe style="position:fixed; width:100%; height:100%; border:0" src="" id="api-frame"
+    sandbox="allow-scripts allow-same-origin allow-popups allow-forms" allow="autoplay; fullscreen; vr" allowvr
+    allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+  <div class="img-container1"><img src="./img/boton-vet-ucm.png"></div>
+
+  <div class="labels"> <!--Estos son los botones que salen a la dch de la pantalla -->
+    <input type="checkbox" id="keyA" onclick="showAndHide('Huesos', 'keyA', 'keyA')" checked> <label for="keyA">Huesos</label>
+
+    <p><input type="checkbox" id="key1" onclick="showGroup('key1')" checked> <label for="key1">Aparato Digestivo</label>
+      <br><input class="tab" type="checkbox" id="keyO" onclick="showAndHide('Esofago ed', 'keyO', 'key1')" checked> <label for="keyO">Esofago</label>
+      <br><input class="tab" type="checkbox" id="keyP" onclick="showAndHide('Estomago ed2', 'keyP', 'key1')" checked> <label for="keyP">Estomago</label>
+      <br><input class="tab" type="checkbox" id="keyQ" onclick="showAndHide('Duodeno ed2', 'keyQ', 'key1')" checked> <label for="keyQ">Duodeno</label>
+      <br><input class="tab" type="checkbox" id="keyR" onclick="showAndHide('Yeyuno ed', 'keyR', 'key1')" checked> <label for="keyR">Yeyuno</label>
+      <br><input class="tab" type="checkbox" id="keyS" onclick="showAndHide('Ileon ed', 'keyS', 'key1')" checked> <label for="keyS">Ileon</label>
+      <br><input class="tab" type="checkbox" id="keyU" onclick="showAndHide('Colon ed', 'keyU', 'key1')" checked> <label for="keyU">Colon</label>
+      <br><input class="tab" type="checkbox" id="keyT" onclick="showAndHide('Ciego ed', 'keyT', 'key1')" checked> <label for="keyT">Ciego</label>
+
+    <p><input type="checkbox" id="key2" onclick="showGroup('key2')" checked> <label for="key2">Aparatos Urinario</label>
+      <br><input class="tab" type="checkbox" id="keyE" onclick="showAndHide('Rinones', 'keyE', 'key2')" checked> <label for="keyE">Rinones</label>
+      <br><input class="tab" type="checkbox" id="keyJ" onclick="showAndHide('Adrenales', 'keyJ', 'key2')" checked> <label for="keyJ">Adrenales</label>
+      <br><input class="tab" type="checkbox" id="keyF" onclick="showAndHide('Ureteres', 'keyF', 'key2')" checked> <label for="keyF">Ureteres</label>
+      <br><input class="tab" type="checkbox" id="keyG" onclick="showAndHide('Vegiga ed', 'keyG', 'key2')" checked> <label for="keyG">Vejíga</label>
+      <br><input class="tab" type="checkbox" id="keyH" onclick="showAndHide('Uretra', 'keyH', 'key2')" checked> <label for="keyH">Uretra</label>
+
+    <p><input type="checkbox" id="key3" onclick="showGroup('key3')" checked> <label for="key3">Aparato Circulatorio</label>
+      <br><input class="tab" type="checkbox" id="keyB" onclick="showAndHide('Aorta ed', 'keyB', 'key3')" checked> <label for="keyB">Aorta</label>
+      <br><input class="tab" type="checkbox" id="keyC" onclick="showAndHide('Cava', 'keyC', 'key3')" checked> <label for="keyC">Vena Cava</label>
+      <br><input class="tab" type="checkbox" id="keyM" onclick="showAndHide('Vena_porta', 'keyM', 'key3')" checked> <label for="keyM">Vena Porta</label>
+      <br><input class="tab" type="checkbox" id="keyI" onclick="showAndHide('Nodulos_linfaticos', 'keyI', 'key3')" checked> <label for="keyI">Nodulos linfaticos</label>
+
+    <p><input type="checkbox" id="key4" onclick="showGroup('key4')" checked> <label for="key4">Otros Organos</label>
+      <br><input class="tab" type="checkbox" id="keyK" onclick="showAndHide('Higado ed7', 'keyK', 'key4')" checked> <label for="keyK">Higado</label>
+      <br><input class="tab" type="checkbox" id="keyL" onclick="showAndHide('Vesicula ed4', 'keyL', 'key4')" checked> <label for="keyL">Vesícula</label>
+      <br><input class="tab" type="checkbox" id="keyN" onclick="showAndHide('Pancreas ed', 'keyN', 'key4')" checked> <label for="keyN">Pancreas</label>
+      <br><input class="tab" type="checkbox" id="keyD" onclick="showAndHide('Bazo ed', 'keyD', 'key4')" checked> <label for="keyD">Bazo</label>
+  </div>
+
+  <div class="img-container2"><img src="./img/logo-ucm.png"></div>
+
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-- SCRIPT -->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------->
+  <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.5.1.js"></script>
+  <script>
+    const model = 'c9e4803324af4c6f9bff55b20e5b7bb0'; // Modelo de referencia a Sketchfab,este fichero cuando lo abres irá al modelo de ese código
+
+    const filteredNodes = {}; // Objeto para guardar nombres de nodos, y si se debe mostrar o no. Ejemplo --> { "A" : { show: true, instanceId: 4} }
+    let apiRef; // Referencia a la api, para poder llamarla fuera del evetListener
+
+    //INICIO Sketchfab
+    //Asi se llama a la versión de api que esté actualmente
+    iframe = document.getElementById('api-frame');
+    client = new Sketchfab( iframe);
+
+    error = function () {
+      console.error('Sketchfab API Error!');
+    },
+
+    success = function (api) {
+      apiRef = api; //Aquí ya estamos nombrando a la variable creada por nosotros
+                    //para poder usarla fuera de lo de Sketchfab
+      api.start();
+      // Wait for viewer to be ready
+      api.addEventListener('viewerready', function () {
+        // Get the object nodes
+        api.getNodeMap(function (err, nodes) {
+          if (!err) {
+            for ( const prop in nodes ) {
+              if ( nodes.hasOwnProperty( prop ) ) {
+                const name = nodes[ prop ].name;
+                filteredNodes[name] = {   //Aquí va rellenando nuestro objeto creado arriba
+                  show: true,
+                  instanceId : nodes[prop].instanceID
+                };
+              };
+            };
+          };
+        });
+      });
+    };
+
+    client.init(model, {
+      success: success,
+      error: error,
+      ui_infos: 0,
+      ui_controls: 0,
+      ui_stop: 1,
+      watermark: 1,
+      supersample: 0
+    });
+    //FIN Sketchfab
+
+    // Funciones Propias
+    //creadas para solo tener que llamarlas desde el .HTML
+    function showAndHide(nodeName, checkId, groupId) {
+      const checkBox = document.getElementById(checkId);
+      const checkGroup = document.getElementById(groupId);
+      if (checkBox.checked == true && checkGroup.checked == true) {
+        apiRef.show(filteredNodes[nodeName].instanceId)
+      } else {
+        apiRef.hide(filteredNodes[nodeName].instanceId)
+      };
+    };
+
+    function showGroup(groupId) {
+      const checkGroup = document.getElementById(groupId);
+
+      const map = new Map();
+      switch(groupId) {
+        case 'key1':
+          map.set('keyO', 'Esofago ed');
+          map.set('keyP', 'Estomago ed2');
+          map.set('keyQ', 'Duodeno ed2');
+          map.set('keyR', 'Yeyuno ed');
+          map.set('keyS', 'Ileon ed');
+          map.set('keyU', 'Colon ed');
+          map.set('keyT', 'Ciego ed');
+          break;
+        case 'key2':
+          map.set('keyE', 'Rinones');
+          map.set('keyJ', 'Adrenales');
+          map.set('keyF', 'Ureteres');
+          map.set('keyG', 'Vegiga ed');
+          map.set('keyH', 'Uretra');
+          break;
+        case 'key3':
+          map.set('keyB', 'Aorta ed');
+          map.set('keyC', 'Cava');
+          map.set('keyM', 'Vena_porta');
+          map.set('keyI', 'Nodulos_linfaticos');
+          break;
+        case 'key4':
+          map.set('keyK', 'Higado ed7');
+          map.set('keyL', 'Vesicula ed4');
+          map.set('keyN', 'Pancreas ed');
+          map.set('keyD', 'Bazo ed');
+          break;
+      }
+
+      if (checkGroup.checked == true) {
+        for (const [key, value] of map) {
+          const checkBox = document.getElementById(key);
+          checkBox.classList.replace("inactive", "active");
+          if (checkBox.checked == true) {apiRef.show(filteredNodes[value].instanceId)}
+        }
+      }
+      else {
+        for (const [key, value] of map) {
+          const checkBox = document.getElementById(key);
+          checkBox.classList.replace("active", "inactive");
+          apiRef.hide(filteredNodes[value].instanceId)
+        }
+      }
+    };
+
+  </script>
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-- STYLE -->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------->
+  <style type="text/css">
+    body {
+      margin: 0;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Para modificar posición y tamaño boton veterinaria UCM */
+    .img-container1 {
+      position: absolute;
+      margin: 0px 5px;
+      top: 45px;
+      width: 150px;
+      right: 0px;
+    }
+
+    /* Para modificar posición y tamaño Escudo UCM */
+    .img-container2 {
+      position: absolute;
+      bottom: 22px;
+      left: 22px;
+      width: 122px;
+    }
+
+    /* Para elegir opacidad de las imagenes de los logos */
+    img {
+      width: 100%;
+      opacity: 0.8;
+    }
+
+    /* Button style, Para cambiar el estilo de los botones */
+    .labels {
+      position: absolute;
+      margin: 5px 5px;
+      right: 0;
+      top: 80px;
+      padding: 5px;
+      z-index: 1;
+      color: blue;
+      background-color: white;
+      opacity: 0.8;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .tab {
+      margin-left: 30px;
+    }
+
+  </style>
+
+</body>
+</html>
