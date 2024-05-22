@@ -16,35 +16,37 @@
   <div class="img-container1"><img src="./img/boton-vet-ucm.png"></div>
 
   <div class="labels"> <!--Estos son los botones que salen a la dch de la pantalla -->
-    <input class="check1" type="checkbox" id="keyA" onclick="showAndHide('Huesos', 'keyA', 'keyA')" checked> <label for="keyA">Huesos</label>
+    <label class="labelpick" id="labelpick" >click un órgano...</label>
+    <hr>
+    <input class="check1" type="checkbox" id="keyA" onclick="showAndHide('keyA')" checked> <label for="keyA"></label>
 
-    <p><input class="check1" type="checkbox" id="key1" onclick="showGroup('key1')" checked> <label for="key1">Aparato Digestivo</label>
-      <br><input class="check2" type="checkbox" id="keyO" onclick="showAndHide('Esofago ed', 'keyO', 'key1')" checked> <label for="keyO">Esofago</label>
-      <br><input class="check2" type="checkbox" id="keyP" onclick="showAndHide('Estomago ed2', 'keyP', 'key1')" checked> <label for="keyP">Estomago</label>
-      <br><input class="check2" type="checkbox" id="keyQ" onclick="showAndHide('Duodeno ed2', 'keyQ', 'key1')" checked> <label for="keyQ">Duodeno</label>
-      <br><input class="check2" type="checkbox" id="keyR" onclick="showAndHide('Yeyuno ed', 'keyR', 'key1')" checked> <label for="keyR">Yeyuno</label>
-      <br><input class="check2" type="checkbox" id="keyS" onclick="showAndHide('Ileon ed', 'keyS', 'key1')" checked> <label for="keyS">Ileon</label>
-      <br><input class="check2" type="checkbox" id="keyU" onclick="showAndHide('Colon ed', 'keyU', 'key1')" checked> <label for="keyU">Colon</label>
-      <br><input class="check2" type="checkbox" id="keyT" onclick="showAndHide('Ciego ed', 'keyT', 'key1')" checked> <label for="keyT">Ciego</label>
+    <p class="pstyle"><input class="check1" type="checkbox" id="key1" onclick="showGroup('key1')" checked> <label for="key1">Aparato Digestivo</label>
+      <br><input class="check2" type="checkbox" id="keyO" onclick="showAndHide('keyO')" checked> <label for="keyO"></label>
+      <br><input class="check2" type="checkbox" id="keyP" onclick="showAndHide('keyP')" checked> <label for="keyP"></label>
+      <br><input class="check2" type="checkbox" id="keyQ" onclick="showAndHide('keyQ')" checked> <label for="keyQ"></label>
+      <br><input class="check2" type="checkbox" id="keyR" onclick="showAndHide('keyR')" checked> <label for="keyR"></label>
+      <br><input class="check2" type="checkbox" id="keyS" onclick="showAndHide('keyS')" checked> <label for="keyS"></label>
+      <br><input class="check2" type="checkbox" id="keyU" onclick="showAndHide('keyU')" checked> <label for="keyU"></label>
+      <br><input class="check2" type="checkbox" id="keyT" onclick="showAndHide('keyT')" checked> <label for="keyT"></label>
 
     <p><input class="check1" type="checkbox" id="key2" onclick="showGroup('key2')" checked> <label for="key2">Aparatos Urinario</label>
-      <br><input class="check2" type="checkbox" id="keyE" onclick="showAndHide('Rinones', 'keyE', 'key2')" checked> <label for="keyE">Rinones</label>
-      <br><input class="check2" type="checkbox" id="keyJ" onclick="showAndHide('Adrenales', 'keyJ', 'key2')" checked> <label for="keyJ">Adrenales</label>
-      <br><input class="check2" type="checkbox" id="keyF" onclick="showAndHide('Ureteres', 'keyF', 'key2')" checked> <label for="keyF">Ureteres</label>
-      <br><input class="check2" type="checkbox" id="keyG" onclick="showAndHide('Vegiga ed', 'keyG', 'key2')" checked> <label for="keyG">Vejíga</label>
-      <br><input class="check2" type="checkbox" id="keyH" onclick="showAndHide('Uretra', 'keyH', 'key2')" checked> <label for="keyH">Uretra</label>
+      <br><input class="check2" type="checkbox" id="keyE" onclick="showAndHide('keyE')" checked> <label for="keyE"></label>
+      <br><input class="check2" type="checkbox" id="keyJ" onclick="showAndHide('keyJ')" checked> <label for="keyJ"></label>
+      <br><input class="check2" type="checkbox" id="keyF" onclick="showAndHide('keyF')" checked> <label for="keyF"></label>
+      <br><input class="check2" type="checkbox" id="keyG" onclick="showAndHide('keyG')" checked> <label for="keyG"></label>
+      <br><input class="check2" type="checkbox" id="keyH" onclick="showAndHide('keyH')" checked> <label for="keyH"></label>
 
     <p><input class="check1" type="checkbox" id="key3" onclick="showGroup('key3')" checked> <label for="key3">Aparato Circulatorio</label>
-      <br><input class="check2" type="checkbox" id="keyB" onclick="showAndHide('Aorta ed', 'keyB', 'key3')" checked> <label for="keyB">Aorta</label>
-      <br><input class="check2" type="checkbox" id="keyC" onclick="showAndHide('Cava', 'keyC', 'key3')" checked> <label for="keyC">Vena Cava</label>
-      <br><input class="check2" type="checkbox" id="keyM" onclick="showAndHide('Vena_porta', 'keyM', 'key3')" checked> <label for="keyM">Vena Porta</label>
-      <br><input class="check2" type="checkbox" id="keyI" onclick="showAndHide('Nodulos_linfaticos', 'keyI', 'key3')" checked> <label for="keyI">Nodulos linfaticos</label>
+      <br><input class="check2" type="checkbox" id="keyB" onclick="showAndHide('keyB')" checked> <label for="keyB"></label>
+      <br><input class="check2" type="checkbox" id="keyC" onclick="showAndHide('keyC')" checked> <label for="keyC"></label>
+      <br><input class="check2" type="checkbox" id="keyM" onclick="showAndHide('keyM')" checked> <label for="keyM"></label>
+      <br><input class="check2" type="checkbox" id="keyI" onclick="showAndHide('keyI')" checked> <label for="keyI"></label>
 
     <p><input class="check1" type="checkbox" id="key4" onclick="showGroup('key4')" checked> <label for="key4">Otros Organos</label>
-      <br><input class="check2" type="checkbox" id="keyK" onclick="showAndHide('Higado ed7', 'keyK', 'key4')" checked> <label for="keyK">Higado</label>
-      <br><input class="check2" type="checkbox" id="keyL" onclick="showAndHide('Vesicula ed4', 'keyL', 'key4')" checked> <label for="keyL">Vesícula</label>
-      <br><input class="check2" type="checkbox" id="keyN" onclick="showAndHide('Pancreas ed', 'keyN', 'key4')" checked> <label for="keyN">Pancreas</label>
-      <br><input class="check2" type="checkbox" id="keyD" onclick="showAndHide('Bazo ed', 'keyD', 'key4')" checked> <label for="keyD">Bazo</label>
+      <br><input class="check2" type="checkbox" id="keyK" onclick="showAndHide('keyK')" checked> <label for="keyK"></label>
+      <br><input class="check2" type="checkbox" id="keyL" onclick="showAndHide('keyL')" checked> <label for="keyL"></label>
+      <br><input class="check2" type="checkbox" id="keyN" onclick="showAndHide('keyN')" checked> <label for="keyN"></label>
+      <br><input class="check2" type="checkbox" id="keyD" onclick="showAndHide('keyD')" checked> <label for="keyD"></label>
   </div>
 
   <div class="img-container2"><img src="./img/logo-ucm.png"></div>
@@ -55,8 +57,44 @@
 <!-------------------------------------------------------------------------------------------------------------------------------------------------->
   <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.5.1.js"></script>
   <script>
-    const model = 'c9e4803324af4c6f9bff55b20e5b7bb0'; // Modelo de referencia a Sketchfab,este fichero cuando lo abres irá al modelo de ese código
+    const model = 'de1d2fb87999493aa9eea489b7825412'; // Modelo de referencia a Sketchfab,este fichero cuando lo abres irá al modelo de ese código
 
+    const listedKeys = {};
+    listedKeys['keyA'] = { kGroup: 'keyA', Name: 'Huesos', nodeName: 'Huesos' };
+    listedKeys['keyO'] = { kGroup: 'key1', Name: 'Esófago', nodeName: 'Esofago ed' };
+    listedKeys['keyP'] = { kGroup: 'key1', Name: 'Estómago', nodeName: 'Estomago ed2' };
+    listedKeys['keyQ'] = { kGroup: 'key1', Name: 'Duodeno', nodeName: 'Duodeno ed2' };
+    listedKeys['keyR'] = { kGroup: 'key1', Name: 'Yeyuno', nodeName: 'Yeyuno ed' };
+    listedKeys['keyS'] = { kGroup: 'key1', Name: 'Íleon', nodeName: 'Ileon ed' };
+    listedKeys['keyU'] = { kGroup: 'key1', Name: 'Colon', nodeName: 'Colon ed' };
+    listedKeys['keyT'] = { kGroup: 'key1', Name: 'Ciego', nodeName: 'Ciego ed' };
+    listedKeys['keyE'] = { kGroup: 'key2', Name: 'Riñones', nodeName: 'Rinones' };
+    listedKeys['keyJ'] = { kGroup: 'key2', Name: 'Adrenales', nodeName: 'Adrenales' };
+    listedKeys['keyF'] = { kGroup: 'key2', Name: 'Uréteres', nodeName: 'Ureteres' };
+    listedKeys['keyG'] = { kGroup: 'key2', Name: 'Vejiga', nodeName: 'Vegiga ed' };
+    listedKeys['keyH'] = { kGroup: 'key2', Name: 'Uretra', nodeName: 'Uretra' };
+    listedKeys['keyB'] = { kGroup: 'key3', Name: 'Aorta', nodeName: 'Aorta ed' };
+    listedKeys['keyC'] = { kGroup: 'key3', Name: 'Vena Cava', nodeName: 'Vena cava' };
+    listedKeys['keyM'] = { kGroup: 'key3', Name: 'Vena Porta', nodeName: 'Vena porta' };
+    listedKeys['keyI'] = { kGroup: 'key3', Name: 'Nódulos Linfáticos', nodeName: 'Nodulos linfaticos' };
+    listedKeys['keyK'] = { kGroup: 'key4', Name: 'Hígado', nodeName: 'Higado ed7' };
+    listedKeys['keyL'] = { kGroup: 'key4', Name: 'Vesícula', nodeName: 'Vesicula ed4' };
+    listedKeys['keyN'] = { kGroup: 'key4', Name: 'Páncreas', nodeName: 'Pancreas ed' };
+    listedKeys['keyD'] = { kGroup: 'key4', Name: 'Bazo', nodeName: 'Bazo ed' };
+
+    const labelsFor = {};
+    const labelsHTML = document.getElementsByTagName("label");
+    for (var i = 0; i < labelsHTML.length; i++) {
+        labelsFor[labelsHTML[i].getAttribute("for")] = i;
+    };
+
+    for (var key in listedKeys) {
+      var kBox = listedKeys[key];
+      var index = labelsFor[key];
+      labelsHTML[index].innerText = listedKeys[key].Name;
+    }
+
+    const listedNodes = {};   // Objeto para guardar todos los nodos, también los que tienen el mismo nombre
     const filteredNodes = {}; // Objeto para guardar nombres de nodos, y si se debe mostrar o no. Ejemplo --> { "A" : { show: true, instanceId: 4} }
     let apiRef; // Referencia a la api, para poder llamarla fuera del evetListener
 
@@ -81,14 +119,33 @@
             for ( const prop in nodes ) {
               if ( nodes.hasOwnProperty( prop ) ) {
                 const name = nodes[ prop ].name;
+                listedNodes[prop] = name;
                 filteredNodes[name] = {   //Aquí va rellenando nuestro objeto creado arriba
                   show: true,
-                  instanceId : nodes[prop].instanceID
+                  instanceId: nodes[prop].instanceID
                 };
               };
             };
           };
         });
+
+        api.addEventListener('click', function(info) {
+          if (info.instanceID === null) {
+            document.getElementById('labelpick').innerHTML = 'click un órgano...';
+          }
+          else {
+            const node = listedNodes[info.instanceID].split('_')[0];
+            for (kBox in listedKeys) {
+              if (listedKeys[kBox].nodeName == node) {
+                Name = listedKeys[kBox].Name;
+                document.getElementById('labelpick').innerHTML = Name;
+
+              }
+            }
+          }
+        },
+        { pick: 'slow' });
+
       });
     };
 
@@ -105,65 +162,59 @@
 
     // Funciones Propias
     //creadas para solo tener que llamarlas desde el .HTML
-    function showAndHide(nodeName, checkId, groupId) {
-      const checkBox = document.getElementById(checkId);
-      const checkGroup = document.getElementById(groupId);
+    function showAndHide(kBox) {
+      const node = listedKeys[kBox].nodeName
+      const group = listedKeys[kBox].kGroup
+      const checkBox = document.getElementById(kBox);
+      const checkGroup = document.getElementById(group);
+
       if (checkBox.checked == true && checkGroup.checked == true) {
-        apiRef.show(filteredNodes[nodeName].instanceId)
+        apiRef.show(filteredNodes[node].instanceId)
       } else {
-        apiRef.hide(filteredNodes[nodeName].instanceId)
+        apiRef.hide(filteredNodes[node].instanceId)
       };
     };
 
     function showGroup(groupId) {
       const checkGroup = document.getElementById(groupId);
 
-      const map = new Map();
+      const group = [];
       switch(groupId) {
-        case 'key1':
-          map.set('keyO', 'Esofago ed');
-          map.set('keyP', 'Estomago ed2');
-          map.set('keyQ', 'Duodeno ed2');
-          map.set('keyR', 'Yeyuno ed');
-          map.set('keyS', 'Ileon ed');
-          map.set('keyU', 'Colon ed');
-          map.set('keyT', 'Ciego ed');
+        case "key1":
+          group.push( "keyO", "keyP", "keyQ", "keyR", "keyS", "keyU", "keyT" );
           break;
-        case 'key2':
-          map.set('keyE', 'Rinones');
-          map.set('keyJ', 'Adrenales');
-          map.set('keyF', 'Ureteres');
-          map.set('keyG', 'Vegiga ed');
-          map.set('keyH', 'Uretra');
+        case "key2":
+          group.push( "keyE", "keyJ", "keyF", "keyG", "keyH" );
           break;
-        case 'key3':
-          map.set('keyB', 'Aorta ed');
-          map.set('keyC', 'Cava');
-          map.set('keyM', 'Vena_porta');
-          map.set('keyI', 'Nodulos_linfaticos');
+        case "key3":
+          group.push( "keyB", "keyC", "keyM", "keyI" );
           break;
-        case 'key4':
-          map.set('keyK', 'Higado ed7');
-          map.set('keyL', 'Vesicula ed4');
-          map.set('keyN', 'Pancreas ed');
-          map.set('keyD', 'Bazo ed');
+        case "key4":
+          group.push( "keyK", "keyL", "keyN", "keyD" );
           break;
-      }
+      };
 
       if (checkGroup.checked == true) {
-        for (const [key, value] of map) {
-          const checkBox = document.getElementById(key);
+        for (const key in group) {
+          const kBox = group[key];
+          const checkBox = document.getElementById(kBox);
           checkBox.disabled = false;
-          if (checkBox.checked == true) {apiRef.show(filteredNodes[value].instanceId)}
+          labelsHTML[labelsFor[kBox]].style.color = 'blue';
+          const node = listedKeys[kBox].nodeName;
+          if (checkBox.checked == true) {apiRef.show(filteredNodes[node].instanceId)}
         }
       }
       else {
-        for (const [key, value] of map) {
-          const checkBox = document.getElementById(key);
+        for (const key in group) {
+          const kBox = group[key];
+          const checkBox = document.getElementById(kBox);
           checkBox.disabled = true;
-          apiRef.hide(filteredNodes[value].instanceId)
+          labelsHTML[labelsFor[kBox]].style.color = 'gray';
+          const node = listedKeys[kBox].nodeName
+          apiRef.hide(filteredNodes[node].instanceId);
         }
       }
+
     };
 
   </script>
@@ -180,6 +231,12 @@
       width: 100%;
       height: 100%;
       border: none;
+    }
+
+    /* Para elegir opacidad de las imagenes de los logos */
+    img {
+      width: 100%;
+      opacity: 0.8;
     }
 
     /* Para modificar posición y tamaño boton veterinaria UCM */
@@ -199,10 +256,13 @@
       width: 122px;
     }
 
-    /* Para elegir opacidad de las imagenes de los logos */
-    img {
-      width: 100%;
-      opacity: 0.8;
+    p {
+      margin-top:    5px;
+      margin-bottom: 0px;
+    }
+
+    .labelpick {
+      color: red;
     }
 
     /* Button style, Para cambiar el estilo de los botones */
