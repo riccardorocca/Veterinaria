@@ -16,7 +16,7 @@
   <div class="img-container1"><img src="./img/boton-vet-ucm.png"></div>
 
   <div class="labels"> <!--Estos son los botones que salen a la dch de la pantalla -->
-    <label class="labelpick" id="labelpick" >click un órgano...</label>
+    <label class="labelpick" id="labelpick" >clic en un órgano...</label>
     <hr>
     <input class="check1" type="checkbox" id="keyA" onclick="showAndHide('keyA')" checked> <label for="keyA"></label>
 
@@ -135,7 +135,7 @@
         // Cuando se hace click sobre un órgano, aparece su nombre en cima a la lista de botones
         api.addEventListener('click', function(info) {
           if (info.instanceID === null) {
-            document.getElementById('labelpick').innerHTML = 'click un órgano...';
+            document.getElementById('labelpick').innerHTML = 'clic en un órgano...';
           }
           else {
             const node = listedNodes[info.instanceID].split('_')[0];
