@@ -122,23 +122,26 @@
             for ( const prop in nodes ) {
               if ( nodes.hasOwnProperty( prop ) ) {
                 const name = nodes[ prop ].name;
-                listedNodes[prop] = name;
-                filteredNodes[name] = {   //Aquí va rellenando nuestro objeto creado arriba
-                  show: true,
-                  instanceId: nodes[prop].instanceID
-                };
+                const baseName = name.split('_')[0]; //Nombre base, sin nombre de testura (_...)
+                listedNodes[prop] = baseName;
+                if (name == baseName) {
+                  filteredNodes[name] = {   //Aquí va rellenando nuestro objeto creado arriba
+                    show: true,
+                    instanceId: nodes[prop].instanceID
+                  };
+                }
               };
             };
           };
         });
 
-        // Cuando se hace click sobre un órgano, aparece su nombre en cima a la lista de botones
+        // Cuando se hace click en un órgano, aparece su nombre en cima a la lista de botones
         api.addEventListener('click', function(info) {
           if (info.instanceID === null) {
             document.getElementById('labelpick').innerHTML = 'clic en un órgano...';
           }
           else {
-            const node = listedNodes[info.instanceID].split('_')[0];
+            const node = listedNodes[info.instanceID];
             for (kBox in listedKeys) {
               if (listedKeys[kBox].nodeName == node) {
                 Name = listedKeys[kBox].Name;
