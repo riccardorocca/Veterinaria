@@ -29,7 +29,7 @@
       <br><input class="check2" type="checkbox" id="keyU" onclick="showAndHide('keyU')" checked> <label for="keyU"></label>
       <br><input class="check2" type="checkbox" id="keyT" onclick="showAndHide('keyT')" checked> <label for="keyT"></label>
 
-    <p><input class="check1" type="checkbox" id="key2" onclick="showGroup('key2')" checked> <label for="key2">Aparatos Urinario</label>
+    <p><input class="check1" type="checkbox" id="key2" onclick="showGroup('key2')" checked> <label for="key2">Aparato Urinario</label>
       <br><input class="check2" type="checkbox" id="keyE" onclick="showAndHide('keyE')" checked> <label for="keyE"></label>
       <br><input class="check2" type="checkbox" id="keyJ" onclick="showAndHide('keyJ')" checked> <label for="keyJ"></label>
       <br><input class="check2" type="checkbox" id="keyF" onclick="showAndHide('keyF')" checked> <label for="keyF"></label>
@@ -59,6 +59,7 @@
   <script>
     const model = 'de1d2fb87999493aa9eea489b7825412'; // Modelo de referencia a Sketchfab,este fichero cuando lo abres irá al modelo de ese código
 
+    //Objeto para recoger las correspondencias entre nombres, nodos y botones
     const listedKeys = {};
     listedKeys['keyA'] = { kGroup: 'keyA', Name: 'Huesos', nodeName: 'Huesos' };
     listedKeys['keyO'] = { kGroup: 'key1', Name: 'Esófago', nodeName: 'Esofago ed' };
@@ -82,12 +83,14 @@
     listedKeys['keyN'] = { kGroup: 'key4', Name: 'Páncreas', nodeName: 'Pancreas ed' };
     listedKeys['keyD'] = { kGroup: 'key4', Name: 'Bazo', nodeName: 'Bazo ed' };
 
+    // Objetos para guardar las referencias HTML de las etiquetas
     const labelsFor = {};
     const labelsHTML = document.getElementsByTagName("label");
     for (var i = 0; i < labelsHTML.length; i++) {
         labelsFor[labelsHTML[i].getAttribute("for")] = i;
     };
 
+    // Bucle para insertar en cada etiqueta el nombre del órgano correspondiente
     for (var key in listedKeys) {
       var kBox = listedKeys[key];
       var index = labelsFor[key];
@@ -129,6 +132,7 @@
           };
         });
 
+        // Cuando se hace click sobre un órgano, aparece su nombre en cima a la lista de botones
         api.addEventListener('click', function(info) {
           if (info.instanceID === null) {
             document.getElementById('labelpick').innerHTML = 'click un órgano...';
@@ -175,6 +179,7 @@
       };
     };
 
+    // Activa-Desactiva los grupos de botones
     function showGroup(groupId) {
       const checkGroup = document.getElementById(groupId);
 
@@ -256,11 +261,13 @@
       width: 122px;
     }
 
+    /* Para cambiar los espacios entre las líneas de botones */
     p {
       margin-top:    5px;
       margin-bottom: 0px;
     }
 
+    /* Estilo de la etiqueta que muestra el nombre del órgano donde se ha hecho click */
     .labelpick {
       display: block;
       color: red;
@@ -268,7 +275,7 @@
       text-align: center;
     }
 
-    /* Button style, Para cambiar el estilo de los botones */
+    /* Estilo de las etiquetas de los botones */
     .labels {
       position: absolute;
       margin: 5px 5px;
@@ -282,6 +289,7 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    /* Estilo de los botones de grupos */
     .check1 {
       cursor: pointer;
       background-color: white;
@@ -297,6 +305,7 @@
       background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
     }
 
+    /* Estilo de los botones de órganos */
     .check2 {
       cursor: pointer;
       background-color: white;
