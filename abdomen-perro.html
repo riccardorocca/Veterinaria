@@ -209,13 +209,13 @@
           else          { XYZi = 3 };
           api.setCameraLookAt(XYZa[XYZi], XYZb[XYZi], 2);
         });
-/*
+
         buttonB.addEventListener( 'click', function() {
           if (XYZi < 3) { XYZi ++ }
           else          { XYZi = 0 };
           api.setCameraLookAt(XYZa[XYZi], XYZb[XYZi], 2);
         });
-*/
+/*
         //Uso alternativo del boton B, para mostrar coordenadas y azimuth de la cámara
         buttonB.addEventListener( 'click', function() {
           api.getCameraLookAt(function(err, camera) {
@@ -229,7 +229,7 @@
             win.document.body.innerHTML = camera.position+"\n"+camera.target+"\n"+azimuth;
           });
         });
-
+*/
 
         //Código para mostrar el nombre de un órgano cuando se clica en él
         api.addEventListener('click', function(info) {
