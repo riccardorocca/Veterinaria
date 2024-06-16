@@ -18,6 +18,7 @@
   <div class="labels"> <!--Estos son los botones que salen a la dch de la pantalla -->
     <button id="buttonA"><span class="material-symbols-outlined">rotate_90_degrees_cw</span></button>
     <button id="buttonB"><span class="material-symbols-outlined">rotate_90_degrees_ccw</span></button>
+    <button id="buttonC"><span class="material-symbols-outlined">info</span></button>
     <hr>
     <label class="labelpick" id="labelpick" >clic en un órgano...</label>
 
@@ -68,6 +69,7 @@
     //Redefine los dos botones
     const buttonA = document.getElementById( 'buttonA' );
     const buttonB = document.getElementById( 'buttonB' );
+    const buttonC = document.getElementById( 'buttonC' );
 
     var azimuth; //variable global para pasar el resultado de la función getAzimuth()
 
@@ -247,6 +249,21 @@
         });
 */
 
+        //Abre una ventana con informaciones
+        buttonC.addEventListener( 'click', function() {
+          alert("Modelo 3D \"Abdomen de perro\"\n"+
+                "Facultad de Veterinaria - Universidad Complutense de Madrid\n\n"+
+                "Controles con el ratón:\n"+
+                "- boton izquierdo: gira el modelo\n"+
+                "- boton mediano: desplaza el modelo\n"+
+                "- rueda mediana: zoom\n"+
+                "- clic en un órgano: muestra el nombre del órgano\n"+
+                "- doble clic en un órgano: lo convierte en el pivote del modelo\n"+
+                "- clic en botones de giro: giran el modelo hacia 4 vistas estandar\n"+
+                "- opciones del menú: encienden/apagan un órgano o grupo de órganos"
+              );
+        });
+
         //Código para mostrar el nombre de un órgano cuando se clica en él
         api.addEventListener('click', function(info) {
           if (info.instanceID === null) {
@@ -412,8 +429,8 @@
     }
 
     button {
-      height: 20px;
-      line-height: 21px;
+      height: 25px;
+      line-height: 25px;
       text-transform: capitalize;
       color: white;
       opacity: 0.8;
@@ -422,15 +439,16 @@
       text-align: center;
       vertical-align: middle;
       display: block;
-      margin-top: 2px;
+      margin-top: 0px;
       background: #1caad9;
     }
 
     button:hover {opacity: 0.9;}
     button:active {opacity: 1;}
 
-    #buttonA {width: 49%; display: inline;}
-    #buttonB {width: 48%; display: inline;}
+    #buttonA {width: 32%; display: inline;}
+    #buttonB {width: 32%; display: inline;}
+    #buttonC {width: 31%; display: inline;}
 
     /* Estilo de la etiqueta que muestra el nombre del órgano donde se ha hecho click */
     .labelpick {
