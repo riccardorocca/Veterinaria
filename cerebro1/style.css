@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+img {
+  width: 220px;
+  opacity: 0.8;
+}
+
+/* Button style */
+.buttons {
+  margin: 35px 5px;
+  right: 0;
+  top:   0;
+  z-index: 1;
+  position: absolute;
+}
+
+button {
+  width: 200px;
+  height: 50px;
+  line-height: 21px;
+  text-transform: capitalize;
+  color: white;
+  opacity: 0.8;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  vertical-align: middle;
+  display: block;
+  margin-top: 2px;
+  background: #1caad9;
+}
+
+button:hover {opacity: 1;}
+button:active {font-weight: bold;}
+
+#keyA {width: 100%;}
+#keyB {width: 49%; display: inline; background: #888888;}
+#keyC {width: 49%; display: inline;}
+#keyD {width: 32%; display: inline;}
+#keyI {width: 32%; display: inline; color: black; background: white;}
+#keyE {width: 32%; display: inline;}
