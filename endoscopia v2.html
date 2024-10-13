@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Endoscopia</title>
+
+  <!-- Insert this script -->
+  <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.5.1.js"></script>
+</head>
+
+<body>
+  <iframe style="position:fixed; width:100%; height:100%; border:0" src="" id="api-frame" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" allow="autoplay; fullscreen; vr" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+  <div class="buttons">
+    <img id="logo" src="https://riccardorocca.github.io/Veterinaria/logo.png">
+    <!-- <button id="keyA">Leyenda</button> -->
+    <br>
+    <button id="keyA">Lado derecho</button>
+    <button id="keyB">Lado izquierdo</button>
+    <button id="keyC"> Imagenes </button>
+  </div>
+
+  <!-- Your new script -->
+  <script>
+    var model = 'f849d4d1d67247328b662fa82d658760',
+
+    // Buttons
+    //buttonA = document.getElementById( 'keyA' ),
+    buttonA = document.getElementById( 'keyA' ),
+    buttonB = document.getElementById( 'keyB' ),
+    buttonC = document.getElementById( 'keyC' ),
+
+    // Variables
+    version = '1.7.1',
+    iframe = document.getElementById( 'api-frame' ),
+    client = new Sketchfab( version, iframe ),
+
+    error = function () {
+      console.error( 'Sketchfab API Error!' );
+    },
+
+    success = function( api ) {
+      api.start();
+      // Wait for viewer to be ready
+      api.addEventListener( 'viewerready', function() {
+        // Get the object nodes
+        api.getNodeMap( function ( err, nodes ) {
+          if ( !err ) {
+            for ( var prop in nodes ) {
+              if ( nodes.hasOwnProperty( prop ) ) {
+                //alert(nodes[prop].instanceID+" : "+nodes[prop].name+" : "+nodes[prop].nodeMask+" : "+nodes[prop].type+" : "+nodes[prop].localMatrix+" ; "+nodes[prop].worldMatrix);
+                if      ( nodes[ prop ].name === "IntestinoL" ) { var node_IntestinoL  = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "IntestinoR" ) { var node_IntestinoR  = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "Target 1" ) { var node_Target1  = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "Target 2" ) { var node_Target2  = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "Target 3" ) { var node_Target3  = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "Target 4" ) { var node_Target4  = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "Target 5" ) { var node_Target5  = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "Target 6" ) { var node_Target6  = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "Target 7" ) { var node_Target7  = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "Target 8" ) { var node_Target8  = nodes[prop].instanceID; }
+              }
+            }
+
+            if (node_IntestinoL) {buttonA.addEventListener( 'click', function() {switch(buttonA.innerHTML) {
+                  case "Lado derecho": buttonA.innerHTML = " Lado derecho "; buttonA.style.backgroundColor = "#888888"; api.hide(node_IntestinoR); break;
+                  case " Lado derecho ": buttonA.innerHTML = "Lado derecho"; buttonA.style.backgroundColor = "#1caad9"; api.show(node_IntestinoR); break;
+            } }); }
+
+            if (node_IntestinoL) {buttonB.addEventListener( 'click', function() {switch(buttonB.innerHTML) {
+                  case "Lado izquierdo": buttonB.innerHTML = " Lado izquierdo "; buttonB.style.backgroundColor = "#888888"; api.hide(node_IntestinoL); break;
+                  case " Lado izquierdo ": buttonB.innerHTML = "Lado izquierdo"; buttonB.style.backgroundColor = "#1caad9"; api.show(node_IntestinoL); break;
+            } }); }
+
+            api.hide(node_Target1); api.hide(node_Target2); api.hide(node_Target3); api.hide(node_Target4); api.hide(node_Target5); api.hide(node_Target6); api.hide(node_Target7); api.hide(node_Target8);
+            if (node_Target1) {buttonC.addEventListener( 'click', function() {switch(buttonC.innerHTML) {
+                  case "Imagenes": buttonC.innerHTML = " Imagenes "; buttonC.style.backgroundColor = "#888888"; api.hide(node_Target1); api.hide(node_Target2); api.hide(node_Target3); api.hide(node_Target4); api.hide(node_Target5); api.hide(node_Target6); api.hide(node_Target7); api.hide(node_Target8); break;
+                  case " Imagenes ": buttonC.innerHTML = "Imagenes"; buttonC.style.backgroundColor = "#1caad9"; api.show(node_Target1); api.show(node_Target2); api.show(node_Target3); api.show(node_Target4); api.show(node_Target5); api.show(node_Target6); api.show(node_Target7); api.show(node_Target8); break;
+            } }); }
+
+          }
+        });
+
+        api.addEventListener('click', function(info) {
+          if (info.instanceID == 211) {alert("Esófago")};
+          if (info.instanceID == 372) {alert("Cardias")};
+          if (info.instanceID == 361) {alert("Fondo")};
+          if (info.instanceID == 326) {alert("Cuerpo")};
+          if (info.instanceID == 307) {alert("Región Pilórica")};
+          if (info.instanceID == 296) {alert("Píloro")};
+          if (info.instanceID == 285) {alert("Duodeno Craneal")};
+          if (info.instanceID == 274) {alert("Flexura Craneal del Duodeno")};
+          if (info.instanceID == 263) {alert("Duodeno Descendente")};
+          if (info.instanceID == 252) {alert("Flexura Caudal del Duodeno")};
+          if (info.instanceID == 241) {alert("Duodeno Transverso")};
+          if (info.instanceID == 230) {alert("Duodeno Ascendente")};
+
+          if (info.instanceID == 5) {alert("Esófago")};
+          if (info.instanceID == 142) {alert("Cardias")};
+          if (info.instanceID == 131) {alert("Fondo")};
+          if (info.instanceID == 112) {alert("Cuerpo")};
+          if (info.instanceID == 101) {alert("Región Pilórica")};
+          if (info.instanceID == 90) {alert("Píloro")};
+          if (info.instanceID == 79) {alert("Duodeno Craneal")};
+          if (info.instanceID == 68) {alert("Flexura Craneal del Duodeno")};
+          if (info.instanceID == 57) {alert("Duodeno Descendente")};
+          if (info.instanceID == 46) {alert("Flexura Caudal del Duodeno")};
+          if (info.instanceID == 35) {alert("Duodeno Transverso")};
+          if (info.instanceID == 24) {alert("Duodeno Ascendente")};
+
+
+          if (info.instanceID == 453) {window.open('https://riccardorocca.github.io/Veterinaria/intestino1.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
+          if (info.instanceID == 512) {window.open('https://riccardorocca.github.io/Veterinaria/intestino2.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
+          if (info.instanceID == 526) {window.open('https://riccardorocca.github.io/Veterinaria/intestino3.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
+          if (info.instanceID == 540) {window.open('https://riccardorocca.github.io/Veterinaria/intestino4.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
+          if (info.instanceID == 554) {window.open('https://riccardorocca.github.io/Veterinaria/intestino5.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
+          if (info.instanceID == 470) {window.open('https://riccardorocca.github.io/Veterinaria/intestino6.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
+          if (info.instanceID == 484) {window.open('https://riccardorocca.github.io/Veterinaria/intestino7.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
+          if (info.instanceID == 498) {window.open('https://riccardorocca.github.io/Veterinaria/intestino8.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
+        },
+        { pick: 'slow' });
+
+      });
+    };
+
+    // Load the model
+    client.init( model, {
+      success: success,
+      error: error,
+      ui_infos: 0,
+      ui_controls: 0,
+      ui_stop: 1,
+      watermark: 1,
+      supersample: 0
+    });
+
+  </script>
+
+  <!-- Lastly, some CSS -->
+  <style type="text/css">
+
+    body {
+      margin: 0;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    img {
+      width: 220px;
+      opacity: 0.8;
+    }
+
+    /* Button style */
+    .buttons {
+      margin: 35px 5px;
+      right: 0;
+      top:   0;
+      z-index: 1;
+      position: absolute;
+    }
+
+    button {
+      width: 200px;
+      height: 50px;
+      line-height: 21px;
+      text-transform: capitalize;
+      color: white;
+      opacity: 0.8;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      vertical-align: middle;
+      display: block;
+      margin-top: 2px;
+      background: #1caad9;
+    }
+
+    button:hover {opacity: 1;}
+    button:active {font-weight: bold;}
+
+    #keyA {width: 108px; display: inline;}
+    #keyB {width: 108px; display: inline;}
+    #keyC {background: #888888; width: 219px;}
+
+  </style>
+</body>
