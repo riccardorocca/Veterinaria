@@ -16,8 +16,8 @@
     <img id="logo" src="https://riccardorocca.github.io/Veterinaria/logo.png">
     <!-- <button id="keyA">Leyenda</button> -->
     <br>
-    <button id="keyA">Lado derecho</button>
     <button id="keyB">Lado izquierdo</button>
+    <button id="keyA">Lado derecho</button>
     <button id="keyC"> Imagenes </button>
   </div>
 
@@ -109,15 +109,15 @@
           if (info.instanceID == 35) {alert("Duodeno Transverso")};
           if (info.instanceID == 24) {alert("Duodeno Ascendente")};
 
-
-          if (info.instanceID == 453) {window.open('https://riccardorocca.github.io/Veterinaria/intestino1.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
-          if (info.instanceID == 512) {window.open('https://riccardorocca.github.io/Veterinaria/intestino2.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
-          if (info.instanceID == 526) {window.open('https://riccardorocca.github.io/Veterinaria/intestino3.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
-          if (info.instanceID == 540) {window.open('https://riccardorocca.github.io/Veterinaria/intestino4.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
-          if (info.instanceID == 554) {window.open('https://riccardorocca.github.io/Veterinaria/intestino5.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
-          if (info.instanceID == 470) {window.open('https://riccardorocca.github.io/Veterinaria/intestino6.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
-          if (info.instanceID == 484) {window.open('https://riccardorocca.github.io/Veterinaria/intestino7.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
-          if (info.instanceID == 498) {window.open('https://riccardorocca.github.io/Veterinaria/intestino8.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
+          if (typeof w !== "undefined") {w.close()};
+          if (info.instanceID == 453) {w=window.open('https://riccardorocca.github.io/Veterinaria/img/intestino1.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
+          if (info.instanceID == 512) {w=window.open('https://riccardorocca.github.io/Veterinaria/img/intestino2.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
+          if (info.instanceID == 526) {w=window.open('https://riccardorocca.github.io/Veterinaria/img/intestino3.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
+          if (info.instanceID == 540) {w=window.open('https://riccardorocca.github.io/Veterinaria/img/intestino4.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
+          if (info.instanceID == 554) {w=window.open('https://riccardorocca.github.io/Veterinaria/img/intestino5.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
+          if (info.instanceID == 470) {w=window.open('https://riccardorocca.github.io/Veterinaria/img/intestino6.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
+          if (info.instanceID == 484) {w=window.open('https://riccardorocca.github.io/Veterinaria/img/intestino7.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
+          if (info.instanceID == 498) {w=window.open('https://riccardorocca.github.io/Veterinaria/img/intestino8.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
         },
         { pick: 'slow' });
 
