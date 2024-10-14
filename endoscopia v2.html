@@ -82,7 +82,9 @@
           }
         });
 
+        var win;
         api.addEventListener('click', function(info) {
+          if (typeof win !== "undefined") {win.close()};
           if (info.instanceID !== null) {
             if (info.instanceID == 211) {alert("Esófago")};
             if (info.instanceID == 372) {alert("Cardias")};
@@ -110,19 +112,21 @@
             if (info.instanceID == 35) {alert("Duodeno Transverso")};
             if (info.instanceID == 24) {alert("Duodeno Ascendente")};
 
-            if (typeof win !== "undefined") {win.close()};
-            if (info.instanceID == 453) {filename = "intestino1.jpg"};
-            if (info.instanceID == 512) {filename = "intestino2.jpg"};
-            if (info.instanceID == 526) {filename = "intestino3.jpg"};
-            if (info.instanceID == 540) {filename = "intestino4.jpg"};
-            if (info.instanceID == 554) {filename = "intestino5.jpg"};
-            if (info.instanceID == 470) {filename = "intestino6.jpg"};
-            if (info.instanceID == 484) {filename = "intestino7.jpg"};
-            if (info.instanceID == 498) {filename = "intestino8.jpg"};
-            win = window.open('https://riccardorocca.github.io/Veterinaria/img/'+filename, "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');
+            if (info.instanceID == 453) {popup('intestino1.jpg')};
+            if (info.instanceID == 512) {popup('intestino2.jpg')};
+            if (info.instanceID == 526) {popup('intestino3.jpg')};
+            if (info.instanceID == 540) {popup('intestino4.jpg')};
+            if (info.instanceID == 554) {popup('intestino5.jpg')};
+            if (info.instanceID == 470) {popup('intestino6.jpg')};
+            if (info.instanceID == 484) {popup('intestino7.jpg')};
+            if (info.instanceID == 498) {popup('intestino8.jpg')};
           };
         },
         { pick: 'slow' });
+
+        function popup(filename) {
+          win = window.open('https://riccardorocca.github.io/Veterinaria/img/'+filename, "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');
+        };
 
       });
     };
