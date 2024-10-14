@@ -83,41 +83,44 @@
         });
 
         api.addEventListener('click', function(info) {
-          if (info.instanceID == 211) {alert("Esófago")};
-          if (info.instanceID == 372) {alert("Cardias")};
-          if (info.instanceID == 361) {alert("Fondo")};
-          if (info.instanceID == 326) {alert("Cuerpo")};
-          if (info.instanceID == 307) {alert("Región Pilórica")};
-          if (info.instanceID == 296) {alert("Píloro")};
-          if (info.instanceID == 285) {alert("Duodeno Craneal")};
-          if (info.instanceID == 274) {alert("Flexura Craneal del Duodeno")};
-          if (info.instanceID == 263) {alert("Duodeno Descendente")};
-          if (info.instanceID == 252) {alert("Flexura Caudal del Duodeno")};
-          if (info.instanceID == 241) {alert("Duodeno Transverso")};
-          if (info.instanceID == 230) {alert("Duodeno Ascendente")};
+          if (info.instanceID !== null) {
+            if (info.instanceID == 211) {alert("Esófago")};
+            if (info.instanceID == 372) {alert("Cardias")};
+            if (info.instanceID == 361) {alert("Fondo")};
+            if (info.instanceID == 326) {alert("Cuerpo")};
+            if (info.instanceID == 307) {alert("Región Pilórica")};
+            if (info.instanceID == 296) {alert("Píloro")};
+            if (info.instanceID == 285) {alert("Duodeno Craneal")};
+            if (info.instanceID == 274) {alert("Flexura Craneal del Duodeno")};
+            if (info.instanceID == 263) {alert("Duodeno Descendente")};
+            if (info.instanceID == 252) {alert("Flexura Caudal del Duodeno")};
+            if (info.instanceID == 241) {alert("Duodeno Transverso")};
+            if (info.instanceID == 230) {alert("Duodeno Ascendente")};
 
-          if (info.instanceID == 5) {alert("Esófago")};
-          if (info.instanceID == 142) {alert("Cardias")};
-          if (info.instanceID == 131) {alert("Fondo")};
-          if (info.instanceID == 112) {alert("Cuerpo")};
-          if (info.instanceID == 101) {alert("Región Pilórica")};
-          if (info.instanceID == 90) {alert("Píloro")};
-          if (info.instanceID == 79) {alert("Duodeno Craneal")};
-          if (info.instanceID == 68) {alert("Flexura Craneal del Duodeno")};
-          if (info.instanceID == 57) {alert("Duodeno Descendente")};
-          if (info.instanceID == 46) {alert("Flexura Caudal del Duodeno")};
-          if (info.instanceID == 35) {alert("Duodeno Transverso")};
-          if (info.instanceID == 24) {alert("Duodeno Ascendente")};
+            if (info.instanceID == 5) {alert("Esófago")};
+            if (info.instanceID == 142) {alert("Cardias")};
+            if (info.instanceID == 131) {alert("Fondo")};
+            if (info.instanceID == 112) {alert("Cuerpo")};
+            if (info.instanceID == 101) {alert("Región Pilórica")};
+            if (info.instanceID == 90) {alert("Píloro")};
+            if (info.instanceID == 79) {alert("Duodeno Craneal")};
+            if (info.instanceID == 68) {alert("Flexura Craneal del Duodeno")};
+            if (info.instanceID == 57) {alert("Duodeno Descendente")};
+            if (info.instanceID == 46) {alert("Flexura Caudal del Duodeno")};
+            if (info.instanceID == 35) {alert("Duodeno Transverso")};
+            if (info.instanceID == 24) {alert("Duodeno Ascendente")};
 
-          if (typeof w !== "undefined") {w.close()};
-          if (info.instanceID == 453) {w=window.open('https://riccardorocca.github.io/Veterinaria/img/intestino1.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
-          if (info.instanceID == 512) {w=window.open('https://riccardorocca.github.io/Veterinaria/img/intestino2.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
-          if (info.instanceID == 526) {w=window.open('https://riccardorocca.github.io/Veterinaria/img/intestino3.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
-          if (info.instanceID == 540) {w=window.open('https://riccardorocca.github.io/Veterinaria/img/intestino4.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
-          if (info.instanceID == 554) {w=window.open('https://riccardorocca.github.io/Veterinaria/img/intestino5.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
-          if (info.instanceID == 470) {w=window.open('https://riccardorocca.github.io/Veterinaria/img/intestino6.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
-          if (info.instanceID == 484) {w=window.open('https://riccardorocca.github.io/Veterinaria/img/intestino7.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
-          if (info.instanceID == 498) {w=window.open('https://riccardorocca.github.io/Veterinaria/img/intestino8.jpg', "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');};
+            if (typeof win !== "undefined") {win.close()};
+            if (info.instanceID == 453) {filename = "intestino1.jpg"};
+            if (info.instanceID == 512) {filename = "intestino2.jpg"};
+            if (info.instanceID == 526) {filename = "intestino3.jpg"};
+            if (info.instanceID == 540) {filename = "intestino4.jpg"};
+            if (info.instanceID == 554) {filename = "intestino5.jpg"};
+            if (info.instanceID == 470) {filename = "intestino6.jpg"};
+            if (info.instanceID == 484) {filename = "intestino7.jpg"};
+            if (info.instanceID == 498) {filename = "intestino8.jpg"};
+            win = window.open('https://riccardorocca.github.io/Veterinaria/img/'+filename, "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');
+          };
         },
         { pick: 'slow' });
 
