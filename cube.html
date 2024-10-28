@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Endoscopia</title>
+
+  <!-- Insert this script -->
+  <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.5.1.js"></script>
+</head>
+
+<body>
+  <iframe style="position:fixed; width:100%; height:100%; border:0" src="" id="api-frame" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" allow="autoplay; fullscreen; vr" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+  <div class="buttons">
+    <button id="keyB">Lado izquierdo</button>
+    <button id="keyA">Lado derecho</button>
+  </div>
+
+  <!-- Your new script -->
+  <script>
+    var model = '382e8865ce6d4437b38301cbb3390d5d';
+
+    // Buttons
+    buttonA = document.getElementById( 'keyA' );
+    buttonB = document.getElementById( 'keyB' );
+
+    // Variables
+    version = '1.7.1';
+    iframe = document.getElementById( 'api-frame' );
+    client = new Sketchfab( version, iframe );
+
+    error = function () {
+      console.error( 'Sketchfab API Error!' );
+    },
+
+    success = function( api ) {
+      api.start();
+      // Wait for viewer to be ready
+      api.addEventListener( 'viewerready', function() {
+        // Get the object nodes
+        api.getNodeMap( function ( err, nodes ) {
+          if ( !err ) {
+            for ( var prop in nodes ) {
+              if ( nodes.hasOwnProperty( prop ) ) {
+                //alert(nodes[prop].instanceID+" : "+nodes[prop].name+" : "+nodes[prop].nodeMask+" : "+nodes[prop].type+" : "+nodes[prop].localMatrix+" ; "+nodes[prop].worldMatrix);
+                if ( nodes[ prop ].name === "Ico" && nodes[prop].type === "MatrixTransform" ) { var node_ico = nodes[prop].instanceID; }
+                if ( nodes[ prop ].name === "Cube" && nodes[prop].type === "MatrixTransform" ) { var node_cube = nodes[prop].instanceID; }
+              }
+            }
+
+            var target = [];
+
+            if (node_ico && node_cube) {buttonA.addEventListener( 'click', function() {
+              buttonA.style.backgroundColor = "#1caad9"; buttonB.style.backgroundColor = "#888888";
+              target = [0,50,0];
+              api.translate(node_ico, [0,50,0], 1.0, 'easeLinear');
+              focus();
+            }); }
+
+            if (node_ico && node_cube) {buttonB.addEventListener( 'click', function() {
+              buttonB.style.backgroundColor = "#1caad9"; buttonA.style.backgroundColor = "#888888";
+              target = [0,-50,0];
+              api.translate(node_ico, [0,-50,0], 1.0, 'easeLinear');
+              focus();
+            }); }
+
+            function focus() {
+              x = .01 * target[0];
+              y = -.01 * target[1];
+              z = .01 * target[2];
+              api.getCameraLookAt(function(err, camera) {
+                api.setCameraLookAt(camera.position, [x,y,z], 2);
+              });
+            }
+
+          }
+        });
+
+      });
+    };
+
+    // Load the model
+    client.init( model, {
+      success: success,
+      error: error,
+      ui_infos: 0,
+      ui_controls: 0,
+      ui_stop: 1,
+      watermark: 1,
+      supersample: 0
+    });
+
+  </script>
+
+  <!-- Lastly, some CSS -->
+  <style type="text/css">
+
+    body {
+      margin: 0;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Button style */
+    .buttons {
+      width: 220px;
+      margin: 40px 5px;
+      right: 0;
+      top:   0;
+      z-index: 1;
+      position: absolute;
+    }
+
+    button {
+      height: 50px;
+      line-height: 21px;
+      text-transform: capitalize;
+      color: white;
+      opacity: 0.8;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      vertical-align: middle;
+      display: block;
+      margin-top: 2px;
+      background: #1caad9;
+    }
+
+    button:hover {opacity: 1;}
+    button:active {font-weight: bold;}
+
+    #keyA {width: 49%; display: inline;}
+    #keyB {width: 49%; display: inline; background: #888888;}
+  </style>
+</body>
