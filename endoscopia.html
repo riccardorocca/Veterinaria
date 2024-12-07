@@ -11,8 +11,13 @@
 <body>
   <iframe style="position:fixed; width:100%; height:100%; border:0" src="" id="api-frame" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" allow="autoplay; fullscreen; vr" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
+  <div class="images">
+    <label id="label1" hidden></label>
+    <img id="image1" hidden src="">
+  </div>
+
   <div class="buttons">
-    <img id="logo" src="https://riccardorocca.github.io/Veterinaria/img/logo-vet.png">
+    <img id="logo" src="https://riccardorocca.github.io/Veterinaria/img/logo-vet.png"></img>
     <!-- <button id="keyA">Leyenda</button> -->
     <br>
     <button id="keyB"><span class="material-symbols-outlined" style="font-size:35px">nightlight</span></button>
@@ -249,20 +254,22 @@
           }
         });
 
-        var window1;
-        var window2;
         api.addEventListener('click', function(info) {
-          if (typeof window1 !== "undefined") {window1.close()};
-          if (typeof window2 !== "undefined") {window2.close()};
-          if (info.instanceID !== null) {
+          if (info.instanceID == null) {
+            document.getElementById("label1").style.display = "none";
+            document.getElementById("image1").style.display = "none";
+          }
+          else {
             if (listedNodes[info.instanceID]) {
-              window1 = window.open("", "", 'width=300, height=110, top="", left=""');
-              window1.document.write("<title>Leyenda</title><p style='font-family: Verdana; font-size: 30; font-weight: bold'>"+listedNodes[info.instanceID]+"</p>");
-              //alert(listedNodes[info.instanceID]);
+              document.getElementById("image1").style.display = "none";
+              document.getElementById('label1').innerHTML = listedNodes[info.instanceID];
+              document.getElementById("label1").style.display = "block";
             }
             else if (listedTargets[info.instanceID]) {
+              document.getElementById("label1").style.display = "none";
               var filename = listedTargets[info.instanceID];
-              window2 = window.open('https://riccardorocca.github.io/Veterinaria/img/'+filename, "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');
+              document.getElementById("image1").src = 'https://riccardorocca.github.io/Veterinaria/img/'+filename;
+              document.getElementById("image1").style.display = "block";
             }
           };
         },
@@ -298,8 +305,26 @@
     }
 
     img {
-      width: 210px;
-      opacity: 0.8;
+      width: 100%;
+    }
+
+    label {
+      color: black;
+      background-color: white;
+      padding: 4px;
+      font-family: Verdana;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    /* Images style */
+    .images {
+      margin: 50px 5px;
+      left: 0;
+      top:   0;
+      width: 400px;
+      z-index: 1;
+      position: absolute;
     }
 
     /* Button style */
@@ -307,17 +332,17 @@
       margin: 40px 5px;
       right: 0;
       top:   0;
+      width: 210px;
+      opacity: 0.8;
       z-index: 1;
       position: absolute;
     }
 
     button {
-      width: 210px;
       height: 50px;
       line-height: 21px;
       text-transform: capitalize;
       color: white;
-      opacity: 0.8;
       border: none;
       border-radius: 5px;
       text-align: center;
