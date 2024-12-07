@@ -1,0 +1,363 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Endoscopia</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.5.1.js"></script>
+</head>
+
+<body>
+  <iframe style="position:fixed; width:100%; height:100%; border:0" src="" id="api-frame" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" allow="autoplay; fullscreen; vr" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+  <div class="images">
+    <img id="image1" hidden src="https://riccardorocca.github.io/Veterinaria/img/intestino1.jpg">
+    <img id="image2" hidden src="https://riccardorocca.github.io/Veterinaria/img/intestino2.jpg">
+    <img id="image3" hidden src="https://riccardorocca.github.io/Veterinaria/img/intestino3.jpg">
+    <img id="image4" hidden src="https://riccardorocca.github.io/Veterinaria/img/intestino4.jpg">
+    <img id="image5" hidden src="https://riccardorocca.github.io/Veterinaria/img/intestino5.jpg">
+    <img id="image6" hidden src="https://riccardorocca.github.io/Veterinaria/img/intestino6.jpg">
+    <img id="image7" hidden src="https://riccardorocca.github.io/Veterinaria/img/intestino7.jpg">
+    <img id="image8" hidden src="https://riccardorocca.github.io/Veterinaria/img/intestino8.jpg">
+  </div>
+
+  <div class="buttons">
+    <img id="logo" src="https://riccardorocca.github.io/Veterinaria/img/logo-vet.png"></img>
+    <!-- <button id="keyA">Leyenda</button> -->
+    <br>
+    <button id="keyB"><span class="material-symbols-outlined" style="font-size:35px">nightlight</span></button>
+    <button id="keyC"><span class="material-symbols-outlined" style="font-size:35px">photo_camera</span></button>
+    <button id="keyA"><span class="material-symbols-outlined" style="font-size:35px">mode_night</span></button>
+    <br>
+    <button id="keyD1"><span class="material-symbols-outlined" style="font-size:40px">face_down</span></button>
+    <button id="keyD0"><span class="material-symbols-outlined" style="font-size:35px">input_circle</span></button>
+    <button id="keyD2"><span class="material-symbols-outlined" style="font-size:40px">face_up</span></button>
+    <br>
+    <button id="keyE"><span class="material-symbols-outlined" style="font-size:35px">keyboard_double_arrow_left</span></button>
+    <button id="keyF">1</button>
+    <button id="keyG"><span class="material-symbols-outlined" style="font-size:35px">keyboard_double_arrow_right</span></button>
+  </div>
+
+  <!-- Your new script -->
+  <script>
+    var model = '314a8e54d10546f09599724a7379e112';
+
+    // Buttons
+    buttonA = document.getElementById( 'keyA' );
+    buttonB = document.getElementById( 'keyB' );
+    buttonC = document.getElementById( 'keyC' );
+    buttonD1 = document.getElementById( 'keyD1' );
+    buttonD0 = document.getElementById( 'keyD0' );
+    buttonD2 = document.getElementById( 'keyD2' );
+    buttonE = document.getElementById( 'keyE' );
+    buttonF = document.getElementById( 'keyF' );
+    buttonG = document.getElementById( 'keyG' );
+
+    var leftSide = "visible";
+    var rightSide = "visible";
+    var pictures = "off";
+    var facing = "caudal";
+
+    const leyenda = {};
+    leyenda['Intestino01'] = { name: 'Esófago' };
+    leyenda['Intestino02'] = { name: 'Cardias' };
+    leyenda['Intestino03'] = { name: 'Fondo' };
+    leyenda['Intestino04'] = { name: 'Cuerpo' };
+    leyenda['Intestino05'] = { name: 'Región Pilórica' };
+    leyenda['Intestino06'] = { name: 'Píloro' };
+    leyenda['Intestino07'] = { name: 'Duodeno Craneal' };
+    leyenda['Intestino08'] = { name: 'Flexura Craneal del Duodeno' };
+    leyenda['Intestino09'] = { name: 'Duodeno Descendente' };
+    leyenda['Intestino10'] = { name: 'Flexura Caudal del Duodeno' };
+    leyenda['Intestino11'] = { name: 'Duodeno Transverso' };
+    leyenda['Intestino12'] = { name: 'Duodeno Ascendente' };
+    leyenda['Target1'] = { filename: 'intestino1.jpg' };
+    leyenda['Target2'] = { filename: 'intestino2.jpg' };
+    leyenda['Target3'] = { filename: 'intestino3.jpg' };
+    leyenda['Target4'] = { filename: 'intestino4.jpg' };
+    leyenda['Target5'] = { filename: 'intestino5.jpg' };
+    leyenda['Target6'] = { filename: 'intestino6.jpg' };
+    leyenda['Target7'] = { filename: 'intestino7.jpg' };
+    leyenda['Target8'] = { filename: 'intestino8.jpg' };
+
+    const listedNodes = {};
+    const listedTargets = {};
+
+    var XYZ = [];
+    XYZ.push([615.37, -361.48, -40.29]);
+    XYZ.push([596.82, -353.99, -41.65]);
+    XYZ.push([545.85, -335.24, -45.85]);
+    XYZ.push([518.10, -327.30, -49.13]);
+    XYZ.push([490.96, -317.75, -52.04]);
+    XYZ.push([465.78, -305.28, -53.35]);
+    XYZ.push([450.02, -296.50, -41.46]);
+    XYZ.push([433.16, -295.50, -39.36]);
+    XYZ.push([416.03, -296.15, -42.59]);
+    XYZ.push([399.90, -304.67, -48.30]);
+    XYZ.push([390.28, -318.26, -55.33]);
+    XYZ.push([388.18, -329.83, -57.92]);
+    XYZ.push([393.87, -343.29, -57.60]);
+    XYZ.push([406.97, -355.73, -55.66]);
+    XYZ.push([419.10, -366.23, -55.41]);
+    XYZ.push([435.93, -374.83, -57.89]);
+    XYZ.push([446.56, -387.54, -62.04]);
+    XYZ.push([443.09, -400.67, -61.51]);
+    XYZ.push([433.30, -415.10, -60.41]);
+    XYZ.push([419.12, -424.54, -60.61]);
+    XYZ.push([398.26, -428.37, -59.75]);
+    XYZ.push([377.49, -428.60, -59.71]);
+    XYZ.push([351.73, -428.14, -58.20]);
+    XYZ.push([327.27, -427.55, -57.25]);
+    XYZ.push([303.10, -427.00, -55.39]);
+    XYZ.push([283.63, -419.83, -57.36]);
+    XYZ.push([276.44, -400.52, -57.37]);
+    XYZ.push([270.89, -384.01, -56.16]);
+    XYZ.push([271.54, -366.60, -56.85]);
+    XYZ.push([281.24, -352.05, -57.58]);
+    XYZ.push([291.10, -339.15, -56.55]);
+    XYZ.push([300.61, -327.06, -54.26]);
+    XYZ.push([329.00, -286.46, -50.81]);
+    XYZ.push([340.20, -270.02, -49.55]);
+
+    var i = 1;
+    var N = XYZ.length;
+
+    // Variables
+    version = '1.7.1';
+    iframe = document.getElementById( 'api-frame' );
+    client = new Sketchfab( version, iframe );
+
+    error = function () {
+      console.error( 'Sketchfab API Error!' );
+    },
+
+    success = function( api ) {
+      api.start();
+      // Wait for viewer to be ready
+      api.addEventListener( 'viewerready', function() {
+        // Get the object nodes
+        api.getNodeMap( function ( err, nodes ) {
+          if ( !err ) {
+
+            //var myWindow1 = window.open("", "MsgWindow1", "width=500,height=1000");
+            //var myWindow2 = window.open("", "MsgWindow2", "width=500,height=1000");
+            var mySplit, myWord;
+
+            for ( var prop in nodes ) {
+              if ( nodes.hasOwnProperty( prop ) ) {
+                //alert(nodes[prop].instanceID+" : "+nodes[prop].name+" : "+nodes[prop].nodeMask+" : "+nodes[prop].type+" : "+nodes[prop].localMatrix+" ; "+nodes[prop].worldMatrix);
+                if (nodes[prop].instanceID > 2 && nodes[prop].type === "MatrixTransform") {
+                  if (nodes[prop].name.substring(0,6) == "Target") {
+                    listedTargets[nodes[prop].instanceID] = leyenda[nodes[prop].name].filename;
+                    //myWindow1.document.write(nodes[prop].instanceID+" --- "+nodes[prop].name+"<br>");
+                  }
+                }
+                if (nodes[prop].instanceID > 2 && nodes[prop].type !== "MatrixTransform") {
+                  mySplit = nodes[prop].name.split("_");
+                  if (mySplit.length >= 2) {
+                    word1 = mySplit[0];
+                    word2 = mySplit[1];
+                    if (word2 == "Target") {
+                      listedTargets[nodes[prop].instanceID] = leyenda[word1].filename;
+                    }
+                    if (word2.substring(0,9) == "Intestino") {
+                      listedNodes[nodes[prop].instanceID] = leyenda[word2].name;
+                    }
+                  }
+                }
+                if      ( nodes[ prop ].name === "IntestinoL" ) { var node_IntestinoL  = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "IntestinoR" ) { var node_IntestinoR  = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "Target1" ) { var node_Target1  = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "Target2" ) { var node_Target2  = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "Target3" ) { var node_Target3  = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "Target4" ) { var node_Target4  = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "Target5" ) { var node_Target5  = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "Target6" ) { var node_Target6  = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "Target7" ) { var node_Target7  = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "Target8" ) { var node_Target8  = nodes[prop].instanceID; }
+              }
+            }
+
+            if (node_IntestinoL) {buttonA.addEventListener( 'click', function() {switch(leftSide) {
+                  case "visible": leftSide = "invisible"; buttonA.style.backgroundColor = "#888888"; api.hide(node_IntestinoR); break;
+                  case "invisible": leftSide = "visible"; buttonA.style.backgroundColor = "#1caad9"; api.show(node_IntestinoR); break;
+            } }); }
+
+            if (node_IntestinoL) {buttonB.addEventListener( 'click', function() {switch(rightSide) {
+                  case "visible": rightSide = "invisible"; buttonB.style.backgroundColor = "#888888"; api.hide(node_IntestinoL); break;
+                  case "invisible": rightSide = "visible"; buttonB.style.backgroundColor = "#1caad9"; api.show(node_IntestinoL); break;
+            } }); }
+
+            api.hide(node_Target1); api.hide(node_Target2); api.hide(node_Target3); api.hide(node_Target4); api.hide(node_Target5); api.hide(node_Target6); api.hide(node_Target7); api.hide(node_Target8);
+            if (node_Target1) {buttonC.addEventListener( 'click', function() {switch(pictures) {
+                  case "on": pictures = "off"; buttonC.style.backgroundColor = "#888888"; api.hide(node_Target1); api.hide(node_Target2); api.hide(node_Target3); api.hide(node_Target4); api.hide(node_Target5); api.hide(node_Target6); api.hide(node_Target7); api.hide(node_Target8); break;
+                  case "off": pictures = "on"; buttonC.style.backgroundColor = "#1caad9"; api.show(node_Target1); api.show(node_Target2); api.show(node_Target3); api.show(node_Target4); api.show(node_Target5); api.show(node_Target6); api.show(node_Target7); api.show(node_Target8); break;
+            } }); }
+
+            buttonD1.addEventListener( 'click', function() {
+              facing = "caudal";
+              buttonD1.style.backgroundColor = "#1caad9";
+              buttonD2.style.backgroundColor = "#888888";
+              setCamera(i);
+            });
+
+            buttonD2.addEventListener( 'click', function() {
+              facing = "rostral";
+              buttonD1.style.backgroundColor = "#888888";
+              buttonD2.style.backgroundColor = "#1caad9";
+              setCamera(i);
+            });
+
+            buttonD0.addEventListener( 'click', function() {
+              api.getCameraLookAt(function(err, camera) {
+                x1 = camera.position[0];
+                y1 = camera.position[1];
+                z1 = camera.position[2];
+                for (var j = 0; j < N; j++) {
+                  x2 = XYZ[j][0];  y2 = XYZ[j][1];  z2 = XYZ[j][2];
+                  dx = x2-x1;  dy = y2-y1;  dz = z2-z1;
+                  D = Math.sqrt(Math.pow(dx,2) + Math.pow(dy,2) + Math.pow(dz,2));
+                  if (j == 0) {jmin = j; Dmin = D;}
+                  else { if (D < Dmin) {jmin = j; Dmin = D;} }
+                }
+                i = jmin;
+                buttonF.innerHTML = i;
+                setCamera(i);
+              });
+            });
+
+            buttonE.addEventListener( 'click', function() {
+              if (i < N-1) { i++ }
+              buttonF.innerHTML = i;
+              setCamera(i);
+            });
+
+            buttonG.addEventListener( 'click', function() {
+              if (i > 1) { i-- }
+              buttonF.innerHTML = i;
+              setCamera(i);
+            });
+
+            function setCamera(i) {
+              var kr = 0.5;
+              x1 = XYZ[i][0];  y1 = XYZ[i][1];  z1 = XYZ[i][2];
+              switch(facing) {
+                case "caudal":
+                  x2 = XYZ[i+1][0];  y2 = XYZ[i+1][1];  z2 = XYZ[i+1][2];
+                  break;
+                case "rostral":
+                  x2 = XYZ[i-1][0];  y2 = XYZ[i-1][1];  z2 = XYZ[i-1][2];
+                  break;
+              }
+              dx = x2 - x1;  dy = y2 - y1;  dz = z2 - z1;
+              r = Math.sqrt(Math.pow(dx,2) + Math.pow(dy,2) + Math.pow(dz,2));
+              dr = kr / r;
+              x0 = x1 - dx * dr;  y0 = y1 - dy * dr;  z0 = z1 - dz * dr;
+              api.setCameraLookAt([x0,y0,z0], XYZ[i], 2);
+            }
+
+          }
+        });
+
+        var window1;
+        var window2;
+        api.addEventListener('click', function(info) {
+          if (typeof window1 !== "undefined") {window1.close()};
+          if (typeof window2 !== "undefined") {window2.close()};
+          if (info.instanceID !== null) {
+            if (listedNodes[info.instanceID]) {
+              window1 = window.open("", "", 'width=300, height=110, top="", left=""');
+              window1.document.write("<title>Leyenda</title><p style='font-family: Verdana; font-size: 30; font-weight: bold'>"+listedNodes[info.instanceID]+"</p>");
+              //alert(listedNodes[info.instanceID]);
+            }
+            else if (listedTargets[info.instanceID]) {
+              var filename = listedTargets[info.instanceID];
+              window2 = window.open('https://riccardorocca.github.io/Veterinaria/img/'+filename, "", 'width=500, height=500, top="", left="", menubar=0, toolbar=0');
+            }
+          };
+        },
+        { pick: 'slow' });
+
+      });
+    };
+
+    // Load the model
+    client.init( model, {
+      success: success,
+      error: error,
+      ui_infos: 0,
+      ui_controls: 0,
+      ui_stop: 1,
+      watermark: 1,
+      supersample: 0
+    });
+
+  </script>
+
+  <!-- Lastly, some CSS -->
+  <style type="text/css">
+
+    body {
+      margin: 0;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    /* Images style */
+    .images {
+      margin: 50px 5px;
+      left: 0;
+      top:   0;
+      width: 400px;
+      z-index: 1;
+      position: absolute;
+    }
+
+    /* Button style */
+    .buttons {
+      margin: 40px 5px;
+      right: 0;
+      top:   0;
+      width: 210px;
+      opacity: 0.8;
+      z-index: 1;
+      position: absolute;
+    }
+
+    button {
+      height: 50px;
+      line-height: 21px;
+      text-transform: capitalize;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      vertical-align: middle;
+      display: block;
+      margin-top: 2px;
+      background: #1caad9;
+    }
+
+    button:hover {opacity: 1;}
+    button:active {font-weight: bold;}
+
+    #keyA {width: 32%; display: inline;}
+    #keyC {width: 32%; display: inline; background: #888888;}
+    #keyB {width: 32%; display: inline;}
+    #keyD1 {width: 32%; display: inline;}
+    #keyD0 {width: 32%; display: inline;}
+    #keyD2 {width: 32%; display: inline; background: #888888;}
+    #keyE {width: 32%; display: inline;}
+    #keyF {width: 32%; display: inline; color: black; background: white; font-size: 25px; font-weight: bold;}
+    #keyG {width: 32%; display: inline;}
+  </style>
+</body>
