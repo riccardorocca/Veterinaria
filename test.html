@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+
+<body>
+  <div class="images">
+    <button id="button1" hidden>ciao</button>
+    <label id="label1" hidden>ciao</label>
+    <img id="image1" hidden src="">
+  </div>
+
+
+  <style type="text/css">
+
+    body {
+      margin: 0;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    label {
+      color: black;
+      background-color: white;
+      padding: 4px;
+      font-family: Verdana;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    /* Images style */
+    .images {
+      margin: 50px 5px;
+      left: 0;
+      top:   0;
+      width: 400px;
+      z-index: 1;
+      position: absolute;
+    }
+
+    /* Button style */
+    .buttons {
+      margin: 40px 5px;
+      right: 0;
+      top:   0;
+      width: 210px;
+      opacity: 0.8;
+      z-index: 1;
+      position: absolute;
+    }
+
+    button {
+      height: 50px;
+      line-height: 21px;
+      text-transform: capitalize;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      vertical-align: middle;
+      margin-top: 2px;
+      background: #1caad9;
+    }
+
+    button:hover {opacity: 1;}
+    button:active {font-weight: bold;}
+
+  </style>
+</body>
