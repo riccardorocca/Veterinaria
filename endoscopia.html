@@ -35,7 +35,7 @@
 
   <!-- Your new script -->
   <script>
-    var model = '314a8e54d10546f09599724a7379e112';
+    var model = '81f344b4167340748a856ca35a13ceca';
 
     // Buttons
     buttonA = document.getElementById( 'keyA' );
@@ -56,16 +56,23 @@
     const leyenda = {};
     leyenda['Intestino01'] = { name: 'Esófago' };
     leyenda['Intestino02'] = { name: 'Cardias' };
-    leyenda['Intestino03'] = { name: 'Fondo' };
-    leyenda['Intestino04'] = { name: 'Cuerpo' };
-    leyenda['Intestino05'] = { name: 'Región Pilórica' };
-    leyenda['Intestino06'] = { name: 'Píloro' };
-    leyenda['Intestino07'] = { name: 'Duodeno Craneal' };
-    leyenda['Intestino08'] = { name: 'Flexura Craneal del Duodeno' };
-    leyenda['Intestino09'] = { name: 'Duodeno Descendente' };
-    leyenda['Intestino10'] = { name: 'Flexura Caudal del Duodeno' };
-    leyenda['Intestino11'] = { name: 'Duodeno Transverso' };
-    leyenda['Intestino12'] = { name: 'Duodeno Ascendente' };
+    leyenda['Intestino03'] = { name: 'Parte Cardial del Estómago' };
+    leyenda['Intestino04'] = { name: 'Fundus (Fondo) del Estómago' };
+    leyenda['Intestino05'] = { name: 'Cuerpo del Estómago' };
+    leyenda['Intestino06'] = { name: 'Cuerpo del Estómago y Pliegues Gástricos' };
+    leyenda['Intestino07'] = { name: 'Región Pilórica' };
+    leyenda['Intestino08'] = { name: 'Píloro' };
+    leyenda['Intestino09'] = { name: 'Duodeno Craneal' };
+    leyenda['Intestino10'] = { name: 'Flexura Craneal del Duodeno' };
+    leyenda['Intestino11'] = { name: 'Duodeno Descendente' };
+    leyenda['Intestino12'] = { name: 'Flexura Caudal del Duodeno' };
+    leyenda['Intestino13'] = { name: 'Duodeno Transverso' };
+    leyenda['Intestino14'] = { name: 'Duodeno Ascendente' };
+    leyenda['Intestino15'] = { name: 'Papila Menor del Duodeno' };
+    leyenda['Intestino16'] = { name: 'Papila Mayor del Duodeno' };
+    leyenda['Intestino17'] = { name: 'Curvatura Mayor' };
+    leyenda['Intestino18'] = { name: 'Curvatura Menor' };
+    leyenda['Intestino19'] = { name: 'Incisura Angular' };
     leyenda['Target1'] = { filename: 'intestino1.jpg' };
     leyenda['Target2'] = { filename: 'intestino2.jpg' };
     leyenda['Target3'] = { filename: 'intestino3.jpg' };
@@ -141,53 +148,51 @@
             for ( var prop in nodes ) {
               if ( nodes.hasOwnProperty( prop ) ) {
                 //alert(nodes[prop].instanceID+" : "+nodes[prop].name+" : "+nodes[prop].nodeMask+" : "+nodes[prop].type+" : "+nodes[prop].localMatrix+" ; "+nodes[prop].worldMatrix);
+
                 if (nodes[prop].instanceID > 2 && nodes[prop].type === "MatrixTransform") {
-                  if (nodes[prop].name.substring(0,6) == "Target") {
-                    listedTargets[nodes[prop].instanceID] = leyenda[nodes[prop].name].filename;
-                    //myWindow1.document.write(nodes[prop].instanceID+" --- "+nodes[prop].name+"<br>");
-                  }
+                  if      ( nodes[ prop ].name === "IntestinoL" ) { var node_IntestinoL  = nodes[prop].instanceID; }
+                  else if ( nodes[ prop ].name === "IntestinoR" ) { var node_IntestinoR  = nodes[prop].instanceID; }
+                  else if ( nodes[ prop ].name === "TargetsL" )   { var node_TargetsL  = nodes[prop].instanceID; }
+                  else if ( nodes[ prop ].name === "TargetsR" )   { var node_TargetsR  = nodes[prop].instanceID; }
+                  else if ( nodes[ prop ].name === "FlechasL" )   { var node_FlechasL  = nodes[prop].instanceID; }
+                  else if ( nodes[ prop ].name === "FlechasR" )   { var node_FlechasR  = nodes[prop].instanceID; }
                 }
+
                 if (nodes[prop].instanceID > 2 && nodes[prop].type !== "MatrixTransform") {
                   mySplit = nodes[prop].name.split("_");
                   if (mySplit.length >= 2) {
                     word1 = mySplit[0];
                     word2 = mySplit[1];
-                    if (word2 == "Target") {
-                      listedTargets[nodes[prop].instanceID] = leyenda[word1].filename;
-                    }
-                    if (word2.substring(0,9) == "Intestino") {
+                    //alert(mySplit+" - "+word1+" | "+word2);
+                    if (word1 == "IntestinoL" || word1 == "IntestinoR" || word1 == "FlechasL" || word1 == "FlechasR") {
                       listedNodes[nodes[prop].instanceID] = leyenda[word2].name;
+                    }
+                    if (word1 == "TargetsL" || word1 == "TargetsR") {
+                      listedTargets[nodes[prop].instanceID] = leyenda[word2].filename;
                     }
                   }
                 }
-                if      ( nodes[ prop ].name === "IntestinoL" ) { var node_IntestinoL  = nodes[prop].instanceID; }
-                else if ( nodes[ prop ].name === "IntestinoR" ) { var node_IntestinoR  = nodes[prop].instanceID; }
-                else if ( nodes[ prop ].name === "Target1" ) { var node_Target1  = nodes[prop].instanceID; }
-                else if ( nodes[ prop ].name === "Target2" ) { var node_Target2  = nodes[prop].instanceID; }
-                else if ( nodes[ prop ].name === "Target3" ) { var node_Target3  = nodes[prop].instanceID; }
-                else if ( nodes[ prop ].name === "Target4" ) { var node_Target4  = nodes[prop].instanceID; }
-                else if ( nodes[ prop ].name === "Target5" ) { var node_Target5  = nodes[prop].instanceID; }
-                else if ( nodes[ prop ].name === "Target6" ) { var node_Target6  = nodes[prop].instanceID; }
-                else if ( nodes[ prop ].name === "Target7" ) { var node_Target7  = nodes[prop].instanceID; }
-                else if ( nodes[ prop ].name === "Target8" ) { var node_Target8  = nodes[prop].instanceID; }
+
               }
             }
 
             if (node_IntestinoL) {buttonA.addEventListener( 'click', function() {switch(leftSide) {
-                  case "visible": leftSide = "invisible"; buttonA.style.backgroundColor = "#888888"; api.hide(node_IntestinoR); break;
-                  case "invisible": leftSide = "visible"; buttonA.style.backgroundColor = "#1caad9"; api.show(node_IntestinoR); break;
+                  case "visible": leftSide = "invisible"; buttonA.style.backgroundColor = "#888888"; api.hide(node_IntestinoR); api.hide(node_TargetsR); api.hide(node_FlechasR); break;
+                  case "invisible": leftSide = "visible"; buttonA.style.backgroundColor = "#1caad9"; api.show(node_IntestinoR); if (pictures == "on") {api.show(node_TargetsR)}; api.show(node_FlechasR); break;
             } }); }
 
             if (node_IntestinoL) {buttonB.addEventListener( 'click', function() {switch(rightSide) {
-                  case "visible": rightSide = "invisible"; buttonB.style.backgroundColor = "#888888"; api.hide(node_IntestinoL); break;
-                  case "invisible": rightSide = "visible"; buttonB.style.backgroundColor = "#1caad9"; api.show(node_IntestinoL); break;
+                  case "visible": rightSide = "invisible"; buttonB.style.backgroundColor = "#888888"; api.hide(node_IntestinoL); api.hide(node_TargetsL); api.hide(node_FlechasL); break;
+                  case "invisible": rightSide = "visible"; buttonB.style.backgroundColor = "#1caad9"; api.show(node_IntestinoL); if (pictures == "on") {api.show(node_TargetsL)}; api.show(node_FlechasL); break;
             } }); }
 
-            api.hide(node_Target1); api.hide(node_Target2); api.hide(node_Target3); api.hide(node_Target4); api.hide(node_Target5); api.hide(node_Target6); api.hide(node_Target7); api.hide(node_Target8);
-            if (node_Target1) {buttonC.addEventListener( 'click', function() {switch(pictures) {
-                  case "on": pictures = "off"; buttonC.style.backgroundColor = "#888888"; api.hide(node_Target1); api.hide(node_Target2); api.hide(node_Target3); api.hide(node_Target4); api.hide(node_Target5); api.hide(node_Target6); api.hide(node_Target7); api.hide(node_Target8); break;
-                  case "off": pictures = "on"; buttonC.style.backgroundColor = "#1caad9"; api.show(node_Target1); api.show(node_Target2); api.show(node_Target3); api.show(node_Target4); api.show(node_Target5); api.show(node_Target6); api.show(node_Target7); api.show(node_Target8); break;
-            } }); }
+            if (node_TargetsR && node_TargetsL) {
+              api.hide(node_TargetsR); api.hide(node_TargetsL);
+              buttonC.addEventListener( 'click', function() {switch(pictures) {
+                  case "on": pictures = "off"; buttonC.style.backgroundColor = "#888888"; api.hide(node_TargetsR); api.hide(node_TargetsL); document.getElementById("image1").style.display = "none"; break;
+                  case "off": pictures = "on"; buttonC.style.backgroundColor = "#1caad9"; if (leftSide == "visible") {api.show(node_TargetsR)}; if (rightSide == "visible") {api.show(node_TargetsL)}; break;
+              } });
+            }
 
             buttonD1.addEventListener( 'click', function() {
               facing = "caudal";
@@ -254,22 +259,43 @@
           }
         });
 
+        var textlabel0 = "";
+        var filename0 = "";
         api.addEventListener('click', function(info) {
           if (info.instanceID == null) {
             document.getElementById("label1").style.display = "none";
+            textlabel0 = "";
             document.getElementById("image1").style.display = "none";
+            filename0 = "";
           }
           else {
             if (listedNodes[info.instanceID]) {
               document.getElementById("image1").style.display = "none";
-              document.getElementById('label1').innerHTML = listedNodes[info.instanceID];
-              document.getElementById("label1").style.display = "block";
+              var textlabel = listedNodes[info.instanceID];
+              if (textlabel == textlabel0) {
+                document.getElementById("label1").style.display = "none";
+                textlabel0 = "";
+              }
+              else {
+                document.getElementById('label1').innerHTML = textlabel;
+                document.getElementById("label1").style.display = "block";
+                textlabel0 = textlabel;
+                filename0 = "";
+              }
             }
             else if (listedTargets[info.instanceID]) {
               document.getElementById("label1").style.display = "none";
               var filename = listedTargets[info.instanceID];
-              document.getElementById("image1").src = 'https://riccardorocca.github.io/Veterinaria/img/'+filename;
-              document.getElementById("image1").style.display = "block";
+              if (filename == filename0) {
+                document.getElementById("image1").style.display = "none";
+                filename0 = "";
+              }
+              else {
+                document.getElementById("image1").src = 'https://riccardorocca.github.io/Veterinaria/img/'+filename;
+                document.getElementById("image1").style.display = "block";
+                filename0 = filename;
+                textlabel0 = "";
+              }
             }
           };
         },
