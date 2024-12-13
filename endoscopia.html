@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+ <!DOCTYPE HTML>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -14,6 +14,7 @@
   <div class="images">
     <label id="label1" hidden></label>
     <img id="image1" hidden src="">
+    <img id="image2" hidden src="https://riccardorocca.github.io/Veterinaria/img/instrucciones.png">
   </div>
 
   <div class="buttons">
@@ -56,6 +57,7 @@
     var rightSide = "visible";
     var pictures = "off";
     var facing = "caudal";
+    var info = "off";
     var inout = "out";
 
     const leyenda = {};
@@ -200,10 +202,16 @@
             }
 
             buttonD0.addEventListener( 'click', function() {
-              api.getCameraLookAt(function(err, camera) {
-                  alert(camera.position); // [x, y, z]
-                  //window.console.log(camera.target); // [x, y, z]
-              });
+              if (info == "off") {
+                document.getElementById("image1").src = 'https://riccardorocca.github.io/Veterinaria/img/instrucciones.png';
+                document.getElementById("image1").style.width = "700px";
+                document.getElementById("image1").style.display = "block";
+                info = "on";
+              }
+              else {
+                document.getElementById("image1").style.display = "none";
+                info = "off";
+              }
             });
 
             buttonD1.addEventListener( 'click', function() {
@@ -319,6 +327,7 @@
               }
               else {
                 document.getElementById("image1").src = 'https://riccardorocca.github.io/Veterinaria/img/'+filename;
+                document.getElementById("image1").style.width = "400px";
                 document.getElementById("image1").style.display = "block";
                 filename0 = filename;
                 textlabel0 = "";
@@ -421,5 +430,6 @@
     #keyE {width: 32%;}
     #keyF {width: 32%; color: black; background: white; font-size: 25px; font-weight: bold;}
     #keyG {width: 32%; background: #92D050;}
+    #image2 {width: 700px;}
   </style>
 </body>
