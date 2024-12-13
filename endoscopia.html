@@ -20,17 +20,19 @@
     <img id="logo" src="https://riccardorocca.github.io/Veterinaria/img/logo-vet.png"></img>
     <!-- <button id="keyA">Leyenda</button> -->
     <br>
-    <button id="keyB"><span class="material-symbols-outlined" style="font-size:35px">nightlight</span></button>
-    <button id="keyC"><span class="material-symbols-outlined" style="font-size:35px">photo_camera</span></button>
-    <button id="keyA"><span class="material-symbols-outlined" style="font-size:35px">mode_night</span></button>
+    <button id="keyB"><span class="material-symbols-outlined">nightlight</span></button>
+    <button id="keyC"><span class="material-symbols-outlined">photo_camera</span></button>
+    <button id="keyA"><span class="material-symbols-outlined">mode_night</span></button>
     <br>
-    <button id="keyD1"><span class="material-symbols-outlined" style="font-size:40px">face_down</span></button>
-    <button id="keyD0"><span class="material-symbols-outlined" style="font-size:35px">input_circle</span></button>
-    <button id="keyD2"><span class="material-symbols-outlined" style="font-size:40px">face_up</span></button>
+    <button id="keyD0"><span class="material-symbols-outlined">info</span></button>
+    <button id="keyD1"><span class="material-symbols-outlined">replay</span></button>
+    <button id="keyD2" hidden><span class="material-symbols-outlined">forward_media</span></button>
+    <button id="keyD3"><span class="material-symbols-outlined">place_item</span></button>
+    <button id="keyD4" hidden><span class="material-symbols-outlined">ios_share</span></button>
     <br>
-    <button id="keyE"><span class="material-symbols-outlined" style="font-size:35px">keyboard_double_arrow_left</span></button>
+    <button id="keyE"><span class="material-symbols-outlined">keyboard_double_arrow_left</span></button>
     <button id="keyF">1</button>
-    <button id="keyG"><span class="material-symbols-outlined" style="font-size:35px">keyboard_double_arrow_right</span></button>
+    <button id="keyG"><span class="material-symbols-outlined">keyboard_double_arrow_right</span></button>
   </div>
 
   <!-- Your new script -->
@@ -41,9 +43,11 @@
     buttonA = document.getElementById( 'keyA' );
     buttonB = document.getElementById( 'keyB' );
     buttonC = document.getElementById( 'keyC' );
-    buttonD1 = document.getElementById( 'keyD1' );
     buttonD0 = document.getElementById( 'keyD0' );
+    buttonD1 = document.getElementById( 'keyD1' );
     buttonD2 = document.getElementById( 'keyD2' );
+    buttonD3 = document.getElementById( 'keyD3' );
+    buttonD4 = document.getElementById( 'keyD4' );
     buttonE = document.getElementById( 'keyE' );
     buttonF = document.getElementById( 'keyF' );
     buttonG = document.getElementById( 'keyG' );
@@ -52,6 +56,7 @@
     var rightSide = "visible";
     var pictures = "off";
     var facing = "caudal";
+    var inout = "out";
 
     const leyenda = {};
     leyenda['Intestino01'] = { name: 'Esófago' };
@@ -194,21 +199,28 @@
               } });
             }
 
+            buttonD0.addEventListener( 'click', function() {
+              api.getCameraLookAt(function(err, camera) {
+                  alert(camera.position); // [x, y, z]
+                  //window.console.log(camera.target); // [x, y, z]
+              });
+            });
+
             buttonD1.addEventListener( 'click', function() {
-              facing = "caudal";
-              buttonD1.style.backgroundColor = "#1caad9";
-              buttonD2.style.backgroundColor = "#888888";
+              document.getElementById("keyD1").style.display = "none";
+              document.getElementById("keyD2").style.display = "inline";
+              facing = "rostral";
               setCamera(i);
             });
 
             buttonD2.addEventListener( 'click', function() {
-              facing = "rostral";
-              buttonD1.style.backgroundColor = "#888888";
-              buttonD2.style.backgroundColor = "#1caad9";
+              document.getElementById("keyD1").style.display = "inline";
+              document.getElementById("keyD2").style.display = "none";
+              facing = "caudal";
               setCamera(i);
             });
 
-            buttonD0.addEventListener( 'click', function() {
+            buttonD3.addEventListener( 'click', function() {
               api.getCameraLookAt(function(err, camera) {
                 x1 = camera.position[0];
                 y1 = camera.position[1];
@@ -224,6 +236,21 @@
                 buttonF.innerHTML = i;
                 setCamera(i);
               });
+              document.getElementById("keyD3").style.display = "none";
+              document.getElementById("keyD4").style.display = "inline";
+              inout = "in";
+            });
+
+            buttonD4.addEventListener( 'click', function() {
+              api.getCameraLookAt(function(err, camera) {
+                x1 = camera.position[0];
+                y1 = camera.position[1];
+                z1 = camera.position[2];
+                api.setCameraLookAt([x1,y1,200], [x1,y1,z1], 2);
+              });
+              document.getElementById("keyD3").style.display = "inline";
+              document.getElementById("keyD4").style.display = "none";
+              inout = "out";
             });
 
             buttonE.addEventListener( 'click', function() {
@@ -353,7 +380,10 @@
       position: absolute;
     }
 
-    /* Button style */
+    .material-symbols-outlined{
+      font-size: 35px;
+    }
+
     .buttons {
       margin: 40px 5px;
       right: 0;
@@ -373,7 +403,6 @@
       border-radius: 5px;
       text-align: center;
       vertical-align: middle;
-      display: block;
       margin-top: 2px;
       background: #1caad9;
     }
@@ -381,14 +410,16 @@
     button:hover {opacity: 1;}
     button:active {font-weight: bold;}
 
-    #keyA {width: 32%; display: inline;}
-    #keyC {width: 32%; display: inline; background: #888888;}
-    #keyB {width: 32%; display: inline;}
-    #keyD1 {width: 32%; display: inline;}
-    #keyD0 {width: 32%; display: inline;}
-    #keyD2 {width: 32%; display: inline; background: #888888;}
-    #keyE {width: 32%; display: inline;}
-    #keyF {width: 32%; display: inline; color: black; background: white; font-size: 25px; font-weight: bold;}
-    #keyG {width: 32%; display: inline;}
+    #keyA {width: 32%;}
+    #keyC {width: 32%; background: #888888;}
+    #keyB {width: 32%;}
+    #keyD1 {width: 32%;}
+    #keyD0 {width: 32%;}
+    #keyD2 {width: 32%; background: #92D050;}
+    #keyD3 {width: 32%;}
+    #keyD4 {width: 32%; background: #92D050;}
+    #keyE {width: 32%;}
+    #keyF {width: 32%; color: black; background: white; font-size: 25px; font-weight: bold;}
+    #keyG {width: 32%; background: #92D050;}
   </style>
 </body>
