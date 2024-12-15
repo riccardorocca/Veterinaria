@@ -38,7 +38,7 @@
 
   <!-- Your new script -->
   <script>
-    var model = '81f344b4167340748a856ca35a13ceca';
+    var model = '44e270883812417d9ecd0f6f9d8ece23';
 
     // Buttons
     buttonA = document.getElementById( 'keyA' );
@@ -57,7 +57,7 @@
     var rightSide = "visible";
     var pictures = "off";
     var facing = "caudal";
-    var info = "off";
+    var infoOnOff = "off";
     var inout = "out";
 
     const leyenda = {};
@@ -78,8 +78,9 @@
     leyenda['Intestino15'] = { name: 'Papila Menor del Duodeno' };
     leyenda['Intestino16'] = { name: 'Papila Mayor del Duodeno' };
     leyenda['Intestino17'] = { name: 'Curvatura Mayor' };
-    leyenda['Intestino18'] = { name: 'Curvatura Menor' };
+    leyenda['Intestino18'] = { name: 'Incisura Cardial' };
     leyenda['Intestino19'] = { name: 'Incisura Angular' };
+    leyenda['Intestino20'] = { name: 'Curvatura Menor' };
     leyenda['Target1'] = { filename: 'intestino1.jpg' };
     leyenda['Target2'] = { filename: 'intestino2.jpg' };
     leyenda['Target3'] = { filename: 'intestino3.jpg' };
@@ -201,19 +202,6 @@
               } });
             }
 
-            buttonD0.addEventListener( 'click', function() {
-              if (info == "off") {
-                document.getElementById("image1").src = 'https://riccardorocca.github.io/Veterinaria/img/instrucciones.png';
-                document.getElementById("image1").style.width = "700px";
-                document.getElementById("image1").style.display = "block";
-                info = "on";
-              }
-              else {
-                document.getElementById("image1").style.display = "none";
-                info = "off";
-              }
-            });
-
             buttonD1.addEventListener( 'click', function() {
               document.getElementById("keyD1").style.display = "none";
               document.getElementById("keyD2").style.display = "inline";
@@ -296,12 +284,30 @@
 
         var textlabel0 = "";
         var filename0 = "";
+
+        buttonD0.addEventListener( 'click', function() {
+          if (infoOnOff == "off") {
+            document.getElementById("label1").style.display = "none";
+            textlabel0 = "";
+            document.getElementById("image1").src = 'https://riccardorocca.github.io/Veterinaria/img/instrucciones.png';
+            document.getElementById("image1").style.width = "700px";
+            document.getElementById("image1").style.display = "block";
+            infoOnOff = "on";
+          }
+          else {
+            document.getElementById("image1").style.display = "none";
+            infoOnOff = "off";
+            filename0 = "";
+          }
+        });
+
         api.addEventListener('click', function(info) {
           if (info.instanceID == null) {
             document.getElementById("label1").style.display = "none";
             textlabel0 = "";
             document.getElementById("image1").style.display = "none";
             filename0 = "";
+            infoOnOff = "off";
           }
           else {
             if (listedNodes[info.instanceID]) {
@@ -316,6 +322,7 @@
                 document.getElementById("label1").style.display = "block";
                 textlabel0 = textlabel;
                 filename0 = "";
+                infoOnOff = "off";
               }
             }
             else if (listedTargets[info.instanceID]) {
@@ -324,6 +331,7 @@
               if (filename == filename0) {
                 document.getElementById("image1").style.display = "none";
                 filename0 = "";
+                infoOnOff = "off";
               }
               else {
                 document.getElementById("image1").src = 'https://riccardorocca.github.io/Veterinaria/img/'+filename;
