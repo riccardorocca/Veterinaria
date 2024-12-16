@@ -286,17 +286,17 @@
         var filename0 = "";
 
         buttonD0.addEventListener( 'click', function() {
-          if (infoOnOff == "off") {
+          var filename = "https://riccardorocca.github.io/Veterinaria/img/instrucciones.png";
+          if (filename != filename0) {
             document.getElementById("label1").style.display = "none";
             textlabel0 = "";
-            document.getElementById("image1").src = 'https://riccardorocca.github.io/Veterinaria/img/instrucciones.png';
+            document.getElementById("image1").src = filename;
             document.getElementById("image1").style.width = "700px";
             document.getElementById("image1").style.display = "block";
-            infoOnOff = "on";
+            filename0 = filename;
           }
           else {
             document.getElementById("image1").style.display = "none";
-            infoOnOff = "off";
             filename0 = "";
           }
         });
@@ -307,7 +307,6 @@
             textlabel0 = "";
             document.getElementById("image1").style.display = "none";
             filename0 = "";
-            infoOnOff = "off";
           }
           else {
             if (listedNodes[info.instanceID]) {
@@ -322,7 +321,6 @@
                 document.getElementById("label1").style.display = "block";
                 textlabel0 = textlabel;
                 filename0 = "";
-                infoOnOff = "off";
               }
             }
             else if (listedTargets[info.instanceID]) {
@@ -331,7 +329,6 @@
               if (filename == filename0) {
                 document.getElementById("image1").style.display = "none";
                 filename0 = "";
-                infoOnOff = "off";
               }
               else {
                 document.getElementById("image1").src = 'https://riccardorocca.github.io/Veterinaria/img/'+filename;
