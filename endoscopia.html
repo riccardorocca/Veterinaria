@@ -13,8 +13,7 @@
 
   <div class="images">
     <label id="label1" hidden></label>
-    <img id="image1" hidden src="">
-    <img id="image2" hidden src="https://riccardorocca.github.io/Veterinaria/img/instrucciones.png">
+    <img id="image1" hidden></img>
   </div>
 
   <div class="buttons">
@@ -53,6 +52,7 @@
     buttonH = document.getElementById( 'keyH' );
 
     // Variables
+    var directory = "https://riccardorocca.github.io/Veterinaria/img/"; // directory with the images
     var leftSide = "visible";  // on/off para el botón que apaga la mitad izquierda del intestino
     var rightSide = "visible"; // on/off para el botón que apaga la mitad derecha del intestino
     var pictures = "off";      // on/off para el botón que enciende las zonas sensibles para las imágenes de la endoscópia
@@ -211,7 +211,7 @@
 
             // abre el cuadro con las instrucciones
             buttonD.addEventListener( 'click', function() {
-              var filename = "https://riccardorocca.github.io/Veterinaria/img/instrucciones.png";
+              var filename = directory + "instrucciones.png";
               if (filename != filename0) {
                 document.getElementById("label1").style.display = "none";
                 textlabel0 = "";
@@ -350,7 +350,7 @@
                 filename0 = "";
               }
               else {
-                document.getElementById("image1").src = 'https://riccardorocca.github.io/Veterinaria/img/'+filename;
+                document.getElementById("image1").src = directory + filename;
                 document.getElementById("image1").style.width = "400px";
                 document.getElementById("image1").style.display = "block";
                 filename0 = filename;
