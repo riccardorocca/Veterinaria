@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Codo</title>
+
+  <!-- Insert this script -->
+  <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.5.1.js"></script>
+</head>
+
+<body>
+  <iframe style="position:fixed; width:100%; height:100%; border:0" src="" id="api-frame" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" allow="autoplay; fullscreen; vr" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+  <div class="buttons">
+    <button id="keyA">Humero</button>
+    <button id="keyB">Radio</button>
+    <button id="keyC">Ulna</button>
+    <button id="keyD">Lig. colateral lateral caudal</button>
+    <button id="keyE">Lig. colateral lateral craneal</button>
+    <button id="keyF">Lig. colateral medial caudal</button>
+    <button id="keyG">Lig. colateral medial craneal</button>
+    <button id="keyH">Ligamento anular</button>
+    <button id="keyI">Ligamento interóseo</button>
+  </div>
+
+  <!-- Your new script -->
+  <script>
+    var model = 'c4d98b161ee448bf956338de2d02c774',
+
+    // Buttons
+    buttonA = document.getElementById( 'keyA' ),
+    buttonB = document.getElementById( 'keyB' ),
+    buttonC = document.getElementById( 'keyC' ),
+    buttonD = document.getElementById( 'keyD' ),
+    buttonE = document.getElementById( 'keyE' ),
+    buttonF = document.getElementById( 'keyF' ),
+    buttonG = document.getElementById( 'keyG' ),
+    buttonH = document.getElementById( 'keyH' ),
+    buttonI = document.getElementById( 'keyI' ),
+
+    // Variables
+    version = '1.7.1',
+    iframe = document.getElementById( 'api-frame' ),
+    client = new Sketchfab( version, iframe ),
+
+    error = function () {
+      console.error( 'Sketchfab API Error!' );
+    },
+
+    success = function( api ) {
+      api.start();
+      // Wait for viewer to be ready
+      api.addEventListener( 'viewerready', function() {
+        // Get the object nodes
+        api.getNodeMap( function ( err, nodes ) {
+          if ( !err ) {
+            for ( var prop in nodes ) {
+              if ( nodes.hasOwnProperty( prop ) ) {
+                //alert(nodes[prop].instanceID+" : "+nodes[prop].name+" : "+nodes[prop].nodeMask+" : "+nodes[prop].type+" : "+nodes[prop].localMatrix+" ; "+nodes[prop].worldMatrix);
+                if ( nodes[ prop ].name === "Humero" ) { var node_humero = nodes[prop].instanceID; }
+                if ( nodes[ prop ].name === "Radio" ) { var node_radio = nodes[prop].instanceID; }
+                if ( nodes[ prop ].name === "Ulna" ) { var node_ulna = nodes[prop].instanceID; }
+
+                if ( nodes[ prop ].name === "Ligamento colateral lateral caudal" ) { var node_lcl_caudal = nodes[prop].instanceID; }
+                if ( nodes[ prop ].name === "Ligamento colateral lateral craneal" ) { var node_lcl_craneal = nodes[prop].instanceID; }
+
+                if ( nodes[ prop ].name === "Ligamento colateral medial caudal" ) { var node_lcm_caudal = nodes[prop].instanceID; }
+                if ( nodes[ prop ].name === "Ligamento colateral medial craneal" ) { var node_lcm_craneal = nodes[prop].instanceID; }
+
+                if ( nodes[ prop ].name === "Ligamento anular" ) { var node_anular = nodes[prop].instanceID; }
+                if ( nodes[ prop ].name === "Ligamento interoseo" ) { var node_interoseo = nodes[prop].instanceID; }
+              }
+            }
+
+            if (node_humero) {buttonA.addEventListener( 'click', function() {switch(buttonA.innerHTML) {
+                  case "Humero": buttonA.innerHTML = " Humero "; buttonA.style.backgroundColor = "#888888"; api.hide(node_humero); break;
+                  case " Humero ": buttonA.innerHTML = "Humero"; buttonA.style.backgroundColor = "#1caad9"; api.show(node_humero); break;
+            } }); }
+
+            if (node_radio) {buttonB.addEventListener( 'click', function() {switch(buttonB.innerHTML) {
+                  case "Radio": buttonB.innerHTML = " Radio "; buttonB.style.backgroundColor = "#888888"; api.hide(node_radio); break;
+                  case " Radio ": buttonB.innerHTML = "Radio"; buttonB.style.backgroundColor = "#1caad9"; api.show(node_radio); break;
+            } }); }
+
+            if (node_ulna) {buttonC.addEventListener( 'click', function() {switch(buttonC.innerHTML) {
+                  case "Ulna": buttonC.innerHTML = " Ulna "; buttonC.style.backgroundColor = "#888888"; api.hide(node_ulna); break;
+                  case " Ulna ": buttonC.innerHTML = "Ulna"; buttonC.style.backgroundColor = "#1caad9"; api.show(node_ulna); break;
+            } }); }
+
+            if (node_lcl_caudal) {buttonD.addEventListener( 'click', function() {switch(buttonD.innerHTML) {
+                  case "Lig. colateral lateral caudal": buttonD.innerHTML = " Lig. colateral lateral caudal "; buttonD.style.backgroundColor = "#888888"; api.hide(node_lcl_caudal); break;
+                  case " Lig. colateral lateral caudal ": buttonD.innerHTML = "Lig. colateral lateral caudal"; buttonD.style.backgroundColor = "#1caad9"; api.show(node_lcl_caudal); break;
+            } }); }
+
+            if (node_lcl_craneal) {buttonE.addEventListener( 'click', function() {switch(buttonE.innerHTML) {
+                  case "Lig. colateral lateral craneal": buttonE.innerHTML = " Lig. colateral lateral craneal "; buttonE.style.backgroundColor = "#888888"; api.hide(node_lcl_craneal); break;
+                  case " Lig. colateral lateral craneal ": buttonE.innerHTML = "Lig. colateral lateral craneal"; buttonE.style.backgroundColor = "#1caad9"; api.show(node_lcl_craneal); break;
+            } }); }
+
+            if (node_lcm_caudal) {buttonF.addEventListener( 'click', function() {switch(buttonF.innerHTML) {
+                  case "Lig. colateral medial caudal": buttonF.innerHTML = " Lig. colateral medial caudal "; buttonF.style.backgroundColor = "#888888"; api.hide(node_lcm_caudal); break;
+                  case " Lig. colateral medial caudal ": buttonF.innerHTML = "Lig. colateral medial caudal"; buttonF.style.backgroundColor = "#1caad9"; api.show(node_lcm_caudal); break;
+            } }); }
+
+            if (node_lcm_craneal) {buttonG.addEventListener( 'click', function() {switch(buttonG.innerHTML) {
+                  case "Lig. colateral medial craneal": buttonG.innerHTML = " Lig. colateral medial craneal "; buttonG.style.backgroundColor = "#888888"; api.hide(node_lcm_craneal); break;
+                  case " Lig. colateral medial craneal ": buttonG.innerHTML = "Lig. colateral medial craneal"; buttonG.style.backgroundColor = "#1caad9"; api.show(node_lcm_craneal); break;
+            } }); }
+
+            if (node_anular) {buttonH.addEventListener( 'click', function() {switch(buttonH.innerHTML) {
+                  case "Ligamento anular": buttonH.innerHTML = " Ligamento anular "; buttonH.style.backgroundColor = "#888888"; api.hide(node_anular); break;
+                  case " Ligamento anular ": buttonH.innerHTML = "Ligamento anular"; buttonH.style.backgroundColor = "#1caad9"; api.show(node_anular); break;
+            } }); }
+
+            if (node_interoseo) {buttonI.addEventListener( 'click', function() {switch(buttonI.innerHTML) {
+                  case "Ligamento interóseo": buttonI.innerHTML = " Ligamento interóseo "; buttonI.style.backgroundColor = "#888888"; api.hide(node_interoseo); break;
+                  case " Ligamento interóseo ": buttonI.innerHTML = "Ligamento interóseo"; buttonI.style.backgroundColor = "#1caad9"; api.show(node_interoseo); break;
+            } }); }
+          }
+        });
+
+      });
+    };
+
+    // Load the model
+    client.init( model, {
+      success: success,
+      error: error,
+      ui_infos: 0,
+      ui_controls: 0,
+      ui_stop: 1,
+      watermark: 1,
+      supersample: 0
+    });
+
+  </script>
+
+  <!-- Lastly, some CSS -->
+  <style type="text/css">
+
+    body {
+      margin: 0;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    img {
+      width: 130px;
+      opacity: 0.8;
+    }
+
+    /* Button style */
+    .buttons {
+      margin: 35px 5px;
+      right: 0;
+      top: : 0;
+      z-index: 1;
+      position: absolute;
+    }
+
+    button {
+      width: 200px;
+      height: 50px;
+      line-height: 21px;
+      text-transform: capitalize;
+      color: white;
+      opacity: 0.8;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      vertical-align: middle;
+      display: block;
+      margin-top: 2px;
+      background: #1caad9;
+    }
+
+    button:hover {opacity: 1;}
+    button:active {font-weight: bold;}
+
+  </style>
+</body>
