@@ -1,130 +1,85 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Codo</title>
-
-  <!-- Insert this script -->
-  <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.5.1.js"></script>
+  <title>Codo</title> <!-- Nombre que queremos que salga en la pestaña del navegador -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <iframe style="position:fixed; width:100%; height:100%; border:0" src="" id="api-frame" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" allow="autoplay; fullscreen; vr" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+  <iframe style="position:fixed; width:100%; height:100%; border:0" src="" id="api-frame"
+    sandbox="allow-scripts allow-same-origin allow-popups allow-forms" allow="autoplay; fullscreen; vr" allowvr
+    allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
-  <div class="buttons">
-    <button id="keyA">Humero</button>
-    <button id="keyB">Radio</button>
-    <button id="keyC">Ulna</button>
-    <button id="keyD">Lig. colateral lateral caudal</button>
-    <button id="keyE">Lig. colateral lateral craneal</button>
-    <button id="keyF">Lig. colateral medial caudal</button>
-    <button id="keyG">Lig. colateral medial craneal</button>
-    <button id="keyH">Ligamento anular</button>
-    <button id="keyI">Ligamento interóseo</button>
+  <div class="img-container1"><img src="./img/logo-vet.png"></div>
+  <div class="buttons"> <!--Estos son los botones que salen a la dch de la pantalla -->
+    <button class="showButton" id="keyH1" onclick="showAndHide('H1', 'keyH1')">Hueso Humero</button>
+    <button class="showButton" id="keyH2" onclick="showAndHide('H2', 'keyH2')">Hueso Radio</button>
+    <button class="showButton" id="keyH3" onclick="showAndHide('H3', 'keyH3')">Hueso Ulna/Cubito</button>
+    <button class="showButton" id="keyH4" onclick="showAndHide('H4', 'keyH4')">Hueso Sesamoideo del m. supinador</button>
+    <button class="showButton" id="keyL1" onclick="showAndHide('L1', 'keyL1')">Ligamento anular</button>
+    <button class="showButton" id="keyL2" onclick="showAndHide('L2', 'keyL2')">Ligamento colateral lateral caudal</button>
+    <button class="showButton" id="keyL3" onclick="showAndHide('L3', 'keyL3')">Ligamento colateral lateral craneal</button>
+    <button class="showButton" id="keyL4" onclick="showAndHide('L4', 'keyL4')">Ligamento colateral medial caudal</button>
+    <button class="showButton" id="keyL5" onclick="showAndHide('L5', 'keyL5')">Ligamento colateral medial craneal</button>
+    <button class="showButton" id="keyL6" onclick="showAndHide('L6', 'keyL6')">Ligamento del olecranon</button>
+    <button class="showButton" id="keyL7" onclick="showAndHide('L7', 'keyL7')">Ligamento interóseo</button>
+    <button class="showButton" id="keyL8" onclick="showAndHide('L8', 'keyL8')">Ligamento oblicuo</button>
+    <button class="showButton" id="keyM1" onclick="showAndHide('M1', 'keyM1')">Musculo pronador redondo</button>
+    <button class="showButton" id="keyM2" onclick="showAndHide('M2', 'keyM2')">Musculo supinador</button>
+    <button class="showButton" id="keyN1" onclick="showAndHide('N1', 'keyN1')">Nervio mediano</button>
+    <button class="showButton" id="keyN2" onclick="showAndHide('N2', 'keyN2')">Nervio radial</button>
+    <button class="showButton" id="keyN3" onclick="showAndHide('N3', 'keyN3')">Nervio ulnar</button>
+    <button class="showButton" id="keyT1" onclick="showAndHide('T1', 'keyT1')">Tendón del m. biceps braquial</button>
+    <button class="showButton" id="keyT2" onclick="showAndHide('T2', 'keyT2')">Tendón del m. braquial</button>
   </div>
 
-  <!-- Your new script -->
+  <div class="img-container2"> <!-- logo esquina -->
+    <img src="./img/logo-ucm.png">
+  </div>
+
+  <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.5.1.js"></script>
   <script>
-    var model = 'c4d98b161ee448bf956338de2d02c774',
+    const model = 'ba800db8c4574ec0ac6a32973fc61a22'; // Modelo de referencia a Sketchfab,este fichero cuando lo abres irá al modelo de ese código
 
-    // Buttons
-    buttonA = document.getElementById( 'keyA' ),
-    buttonB = document.getElementById( 'keyB' ),
-    buttonC = document.getElementById( 'keyC' ),
-    buttonD = document.getElementById( 'keyD' ),
-    buttonE = document.getElementById( 'keyE' ),
-    buttonF = document.getElementById( 'keyF' ),
-    buttonG = document.getElementById( 'keyG' ),
-    buttonH = document.getElementById( 'keyH' ),
-    buttonI = document.getElementById( 'keyI' ),
+    const filteredNodes = {}; // Objeto para guardar nombres de nodos, y si se debe mostrar o no. Ejemplo --> { "A" : { show: true, instanceId: 4} }
+    let apiRef; // Referencia a la api, para poder llamarla fuera del evetListener
 
-    // Variables
-    version = '1.7.1',
-    iframe = document.getElementById( 'api-frame' ),
-    client = new Sketchfab( version, iframe ),
+    //INICIO Sketchfab
+    //Asi se llama a la versión de api que esté actualmente
+    iframe = document.getElementById('api-frame');
+    client = new Sketchfab( iframe);
 
     error = function () {
-      console.error( 'Sketchfab API Error!' );
+      console.error('Sketchfab API Error!');
     },
 
-    success = function( api ) {
+    success = function (api) {
+      apiRef = api; //Aquí ya estamos nombrando a la variable creada por nosotros
+                    //para poder usarla fuera de lo de Sketchfab
       api.start();
       // Wait for viewer to be ready
-      api.addEventListener( 'viewerready', function() {
+      api.addEventListener('viewerready', function () {
         // Get the object nodes
-        api.getNodeMap( function ( err, nodes ) {
-          if ( !err ) {
-            for ( var prop in nodes ) {
+        api.getNodeMap(function (err, nodes) {
+          if (!err) {
+            for ( const prop in nodes ) {
               if ( nodes.hasOwnProperty( prop ) ) {
-                //alert(nodes[prop].instanceID+" : "+nodes[prop].name+" : "+nodes[prop].nodeMask+" : "+nodes[prop].type+" : "+nodes[prop].localMatrix+" ; "+nodes[prop].worldMatrix);
-                if ( nodes[ prop ].name === "Humero" ) { var node_humero = nodes[prop].instanceID; }
-                if ( nodes[ prop ].name === "Radio" ) { var node_radio = nodes[prop].instanceID; }
-                if ( nodes[ prop ].name === "Ulna" ) { var node_ulna = nodes[prop].instanceID; }
-
-                if ( nodes[ prop ].name === "Ligamento colateral lateral caudal" ) { var node_lcl_caudal = nodes[prop].instanceID; }
-                if ( nodes[ prop ].name === "Ligamento colateral lateral craneal" ) { var node_lcl_craneal = nodes[prop].instanceID; }
-
-                if ( nodes[ prop ].name === "Ligamento colateral medial caudal" ) { var node_lcm_caudal = nodes[prop].instanceID; }
-                if ( nodes[ prop ].name === "Ligamento colateral medial craneal" ) { var node_lcm_craneal = nodes[prop].instanceID; }
-
-                if ( nodes[ prop ].name === "Ligamento anular" ) { var node_anular = nodes[prop].instanceID; }
-                if ( nodes[ prop ].name === "Ligamento interoseo" ) { var node_interoseo = nodes[prop].instanceID; }
-              }
-            }
-
-            if (node_humero) {buttonA.addEventListener( 'click', function() {switch(buttonA.innerHTML) {
-                  case "Humero": buttonA.innerHTML = " Humero "; buttonA.style.backgroundColor = "#888888"; api.hide(node_humero); break;
-                  case " Humero ": buttonA.innerHTML = "Humero"; buttonA.style.backgroundColor = "#1caad9"; api.show(node_humero); break;
-            } }); }
-
-            if (node_radio) {buttonB.addEventListener( 'click', function() {switch(buttonB.innerHTML) {
-                  case "Radio": buttonB.innerHTML = " Radio "; buttonB.style.backgroundColor = "#888888"; api.hide(node_radio); break;
-                  case " Radio ": buttonB.innerHTML = "Radio"; buttonB.style.backgroundColor = "#1caad9"; api.show(node_radio); break;
-            } }); }
-
-            if (node_ulna) {buttonC.addEventListener( 'click', function() {switch(buttonC.innerHTML) {
-                  case "Ulna": buttonC.innerHTML = " Ulna "; buttonC.style.backgroundColor = "#888888"; api.hide(node_ulna); break;
-                  case " Ulna ": buttonC.innerHTML = "Ulna"; buttonC.style.backgroundColor = "#1caad9"; api.show(node_ulna); break;
-            } }); }
-
-            if (node_lcl_caudal) {buttonD.addEventListener( 'click', function() {switch(buttonD.innerHTML) {
-                  case "Lig. colateral lateral caudal": buttonD.innerHTML = " Lig. colateral lateral caudal "; buttonD.style.backgroundColor = "#888888"; api.hide(node_lcl_caudal); break;
-                  case " Lig. colateral lateral caudal ": buttonD.innerHTML = "Lig. colateral lateral caudal"; buttonD.style.backgroundColor = "#1caad9"; api.show(node_lcl_caudal); break;
-            } }); }
-
-            if (node_lcl_craneal) {buttonE.addEventListener( 'click', function() {switch(buttonE.innerHTML) {
-                  case "Lig. colateral lateral craneal": buttonE.innerHTML = " Lig. colateral lateral craneal "; buttonE.style.backgroundColor = "#888888"; api.hide(node_lcl_craneal); break;
-                  case " Lig. colateral lateral craneal ": buttonE.innerHTML = "Lig. colateral lateral craneal"; buttonE.style.backgroundColor = "#1caad9"; api.show(node_lcl_craneal); break;
-            } }); }
-
-            if (node_lcm_caudal) {buttonF.addEventListener( 'click', function() {switch(buttonF.innerHTML) {
-                  case "Lig. colateral medial caudal": buttonF.innerHTML = " Lig. colateral medial caudal "; buttonF.style.backgroundColor = "#888888"; api.hide(node_lcm_caudal); break;
-                  case " Lig. colateral medial caudal ": buttonF.innerHTML = "Lig. colateral medial caudal"; buttonF.style.backgroundColor = "#1caad9"; api.show(node_lcm_caudal); break;
-            } }); }
-
-            if (node_lcm_craneal) {buttonG.addEventListener( 'click', function() {switch(buttonG.innerHTML) {
-                  case "Lig. colateral medial craneal": buttonG.innerHTML = " Lig. colateral medial craneal "; buttonG.style.backgroundColor = "#888888"; api.hide(node_lcm_craneal); break;
-                  case " Lig. colateral medial craneal ": buttonG.innerHTML = "Lig. colateral medial craneal"; buttonG.style.backgroundColor = "#1caad9"; api.show(node_lcm_craneal); break;
-            } }); }
-
-            if (node_anular) {buttonH.addEventListener( 'click', function() {switch(buttonH.innerHTML) {
-                  case "Ligamento anular": buttonH.innerHTML = " Ligamento anular "; buttonH.style.backgroundColor = "#888888"; api.hide(node_anular); break;
-                  case " Ligamento anular ": buttonH.innerHTML = "Ligamento anular"; buttonH.style.backgroundColor = "#1caad9"; api.show(node_anular); break;
-            } }); }
-
-            if (node_interoseo) {buttonI.addEventListener( 'click', function() {switch(buttonI.innerHTML) {
-                  case "Ligamento interóseo": buttonI.innerHTML = " Ligamento interóseo "; buttonI.style.backgroundColor = "#888888"; api.hide(node_interoseo); break;
-                  case " Ligamento interóseo ": buttonI.innerHTML = "Ligamento interóseo"; buttonI.style.backgroundColor = "#1caad9"; api.show(node_interoseo); break;
-            } }); }
-          }
+                const name = nodes[ prop ].name;
+                filteredNodes[name] = {   //Aquí va rellenando nuestro objeto creado arriba
+                  show: true,
+                  instanceId : nodes[prop].instanceID
+                };
+              };
+            };
+          };
         });
-
       });
     };
 
-    // Load the model
-    client.init( model, {
+    client.init(model, {
       success: success,
       error: error,
       ui_infos: 0,
@@ -133,12 +88,25 @@
       watermark: 1,
       supersample: 0
     });
+    //FIN Sketchfab
 
+    // Funciones Propias
+    //creadas para solo tener que llamarlas desde el .HTML
+    function showAndHide(nodeName, buttonId) {
+      const btn = document.getElementById(buttonId);
+      filteredNodes[nodeName].show = !filteredNodes[nodeName].show;
+
+      if (filteredNodes[nodeName].show) {
+        btn.classList.replace("hideButton","showButton");
+        apiRef.show(filteredNodes[nodeName].instanceId)
+      } else {
+        btn.classList.replace("showButton", "hideButton");
+        apiRef.hide(filteredNodes[nodeName].instanceId)
+      };
+    };
   </script>
 
-  <!-- Lastly, some CSS -->
   <style type="text/css">
-
     body {
       margin: 0;
     }
@@ -149,38 +117,71 @@
       border: none;
     }
 
+    /* Para modificar posición y tamaño boton veterinaria UCM */
+    .img-container1 {
+      position: absolute;
+      margin: 0px 5px;
+      top: 45px;
+      width: 150px;
+      right: 0px;
+    }
+
+    /* Para modificar posición y tamaño Escudo UCM */
+    .img-container2 {
+      position: absolute;
+      bottom: 22px;
+      left: 22px;
+      width: 122px;
+    }
+
+    /* Para elegir opacidad de las imagenes de los logos */
     img {
-      width: 130px;
+      width: 100%;
       opacity: 0.8;
     }
 
-    /* Button style */
+    /* Button style, Para cambiar el estilo de los botones */
     .buttons {
+      position: absolute;
       margin: 35px 5px;
       right: 0;
-      top: : 0;
+      top: 45px;
       z-index: 1;
-      position: absolute;
     }
 
     button {
-      width: 200px;
-      height: 50px;
+      width: 250px;
+      height: 30px;
       line-height: 21px;
-      text-transform: capitalize;
+      text-transform: none;
       color: white;
       opacity: 0.8;
       border: none;
       border-radius: 5px;
       text-align: center;
-      vertical-align: middle;
       display: block;
       margin-top: 2px;
+    }
+
+    /* Para poder elegir el color del boton cuando se enciende */
+    .showButton {
       background: #1caad9;
     }
 
-    button:hover {opacity: 1;}
-    button:active {font-weight: bold;}
+    /* Para poder elegir el color del boton cuando se apaga */
+    .hideButton {
+      background: #888888;
+    }
+
+    /*Esto hace que cuando pasa el raton por encima se ilumine levemente el botón*/
+    button:hover {
+      opacity: 1;
+    }
+
+    button:active {
+      font-weight: bold;
+    }
 
   </style>
 </body>
+</html>
