@@ -80,6 +80,11 @@
             };
           };
 
+          // Set variable when mouse is on an Annotation
+          var onAnnotation;
+          api.addEventListener('annotationMouseEnter', function() { onAnnotation = true; });
+          api.addEventListener('annotationMouseLeave', function() { onAnnotation = false; });
+
           // Display a label when click on an object
           api.addEventListener('click', function(info) {
 
@@ -88,18 +93,21 @@
               return;
             }
 
-            // Coordinates & nodeName of the click inside the viewer
-            const x = info.position2D[0];
-            const y = info.position2D[1];
-            const nodeName = nodes[info.instanceID].name.split('_')[0]; // When the node name is composed, keep only the first label separated by "_"
-            // Page coordinates
-            const rect = iframe.getBoundingClientRect();
+            if (!onAnnotation) {                   // Display the label if the mouse is not already on an Annotation
+              // Coordinates & nodeName of the click inside the viewer
+              const x = info.position2D[0];
+              const y = info.position2D[1];
+              const nodeName = nodes[info.instanceID].name.split('_')[0]; // When the node name is composed, keep only the first label separated by "_"
+              // Page coordinates
+              const rect = iframe.getBoundingClientRect();
 
-            showLabel(
-              document.getElementById('key' + nodeName).innerHTML,
-              rect.left + x,
-              rect.top + y
-            );
+              showLabel(
+                document.getElementById('key' + nodeName).innerHTML,
+                rect.left + x,
+                rect.top + y
+              );
+            }
+
           });
 
           // Hide label when camera moves
