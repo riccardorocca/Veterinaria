@@ -101,13 +101,7 @@
 
               if (nodeName == "L3") {showLabel("Ligamento colateral lateral", rect.left + x, rect.top + y);}
               else if (nodeName == "L5") {showLabel("Ligamento colateral medial", rect.left + x, rect.top + y);}
-              else {
-                showLabel(
-                  document.getElementById('key' + nodeName).innerHTML,
-                  rect.left + x,
-                  rect.top + y
-                );
-              }
+              else {showLabel(document.getElementById('key' + nodeName).innerHTML, rect.left + x, rect.top + y);}
             }
 
           });
@@ -155,13 +149,17 @@
       if (filteredNodes[nodeName].show) {
         btn.classList.replace("hideButton","showButton");
         apiRef.show(filteredNodes[nodeName].instanceId)
-        if (nodeName == "L2") {apiRef.show(filteredNodes["L3"].instanceId)}
-        if (nodeName == "L4") {apiRef.show(filteredNodes["L5"].instanceId)}
+        if (nodeName == "H1") {apiRef.showAnnotation(0); apiRef.showAnnotation(1);} //Humero(H1): show annotations 1 & 2
+        if (nodeName == "H3") {apiRef.showAnnotation(2);} //Ulna/Cubito(H3): show annotaion 3
+        if (nodeName == "L2") {apiRef.show(filteredNodes["L3"].instanceId); apiRef.showAnnotation(5); apiRef.showAnnotation(6);} //L2: show also L3 and annotation 6 & 7
+        if (nodeName == "L4") {apiRef.show(filteredNodes["L5"].instanceId); apiRef.showAnnotation(3); apiRef.showAnnotation(4);} //L4: show also L5 and annotations 4 & 5
       } else {
         btn.classList.replace("showButton", "hideButton");
         apiRef.hide(filteredNodes[nodeName].instanceId)
-        if (nodeName == "L2") {apiRef.hide(filteredNodes["L3"].instanceId)}
-        if (nodeName == "L4") {apiRef.hide(filteredNodes["L5"].instanceId)}
+        if (nodeName == "H1") {apiRef.hideAnnotation(0); apiRef.hideAnnotation(1);} //Humero(H1): hide annotations 1 & 2
+        if (nodeName == "H3") {apiRef.hideAnnotation(2);} //Ulna/Cubito(H3): hide annotaion 3
+        if (nodeName == "L2") {apiRef.hide(filteredNodes["L3"].instanceId); apiRef.hideAnnotation(5); apiRef.hideAnnotation(6);} //L2: hide also L3 and annotation 6 & 7
+        if (nodeName == "L4") {apiRef.hide(filteredNodes["L5"].instanceId); apiRef.hideAnnotation(3); apiRef.hideAnnotation(4);} //L4: hide also L5 and annotations 4 & 5
       };
     };
 
