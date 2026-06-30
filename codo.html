@@ -69,10 +69,12 @@
             for ( const prop in nodes ) {
               if ( nodes.hasOwnProperty( prop ) ) {
                 //alert(nodes[prop].instanceID+" : "+nodes[prop].name+" : "+nodes[prop].nodeMask+" : "+nodes[prop].type+" : "+nodes[prop].localMatrix+" ; "+nodes[prop].worldMatrix);
-                const name = nodes[ prop ].name;
-                filteredNodes[name] = {   //Aquí va rellenando nuestro objeto creado arriba
-                  show: true,
-                  instanceId : nodes[prop].instanceID
+                if (nodes[ prop ].type === "MatrixTransform") { //filters only nodes with MatrixTransform
+                  const name = nodes[ prop ].name;
+                  filteredNodes[name] = {   //Aquí va rellenando nuestro objeto creado arriba
+                    show: true,
+                    instanceId : nodes[prop].instanceID
+                  };
                 };
               };
             };
