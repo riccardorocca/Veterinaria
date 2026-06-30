@@ -23,8 +23,10 @@
     <button class="showButton" id="keyH3" onclick="showAndHide('H3', 'keyH3')">Ulna/Cubito</button>
     <button class="showButton" id="keyH4" onclick="showAndHide('H4', 'keyH4')">Hueso sesamoideo del músculo supinador</button>
     <button class="showButton" id="keyL1" onclick="showAndHide('L1', 'keyL1')">Ligamento anular del radio</button>
-    <button class="showButton" id="keyL2" onclick="showAndHide('L2', 'keyL2')">Ligamento colateral lateral</button>
-    <button class="showButton" id="keyL4" onclick="showAndHide('L4', 'keyL4')">Ligamento colateral medial</button>
+    <button class="showButton" id="keyL3" onclick="showAndHide('L3', 'keyL3')">Ligamento colateral lateral (pilar caudal)</button>
+    <button class="showButton" id="keyL2" onclick="showAndHide('L2', 'keyL2')">Ligamento colateral lateral (pilar craneal)</button>
+    <button class="showButton" id="keyL4" onclick="showAndHide('L4', 'keyL4')">Ligamento colateral medial (pilar caudal)</button>
+    <button class="showButton" id="keyL5" onclick="showAndHide('L5', 'keyL5')">Ligamento colateral medial (pilar craneal)</button>
     <button class="showButton" id="keyL6" onclick="showAndHide('L6', 'keyL6')">Ligamento del olécranon</button>
     <button class="showButton" id="keyL7" onclick="showAndHide('L7', 'keyL7')">Ligamento interóseo</button>
     <button class="showButton" id="keyL8" onclick="showAndHide('L8', 'keyL8')">Ligamento oblicuo</button>
@@ -99,15 +101,11 @@
               // Page coordinates
               const rect = iframe.getBoundingClientRect();
 
-              if (nodeName == "L3") {showLabel("Ligamento colateral lateral", rect.left + x, rect.top + y);}
-              else if (nodeName == "L5") {showLabel("Ligamento colateral medial", rect.left + x, rect.top + y);}
-              else {
-                showLabel(
-                  document.getElementById('key' + nodeName).innerHTML,
-                  rect.left + x,
-                  rect.top + y
-                );
-              }
+              showLabel(
+                document.getElementById('key' + nodeName).innerHTML,
+                rect.left + x,
+                rect.top + y
+              );
             }
 
           });
@@ -155,13 +153,9 @@
       if (filteredNodes[nodeName].show) {
         btn.classList.replace("hideButton","showButton");
         apiRef.show(filteredNodes[nodeName].instanceId)
-        if (nodeName == "L2") {apiRef.show(filteredNodes["L3"].instanceId)}
-        if (nodeName == "L4") {apiRef.show(filteredNodes["L5"].instanceId)}
       } else {
         btn.classList.replace("showButton", "hideButton");
         apiRef.hide(filteredNodes[nodeName].instanceId)
-        if (nodeName == "L2") {apiRef.hide(filteredNodes["L3"].instanceId)}
-        if (nodeName == "L4") {apiRef.hide(filteredNodes["L5"].instanceId)}
       };
     };
 
