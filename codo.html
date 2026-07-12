@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Codo</title> <!-- Nombre que queremos que salga en la pestaña del navegador -->
+  <title>Codo</title> <!-- Name that appears in the browser tab -->
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,43 +13,41 @@
     sandbox="allow-scripts allow-same-origin allow-popups allow-forms" allow="autoplay; fullscreen; vr" allowvr
     allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
-  <div class="img-container1"><img src="./img/logo-vet.png"></div>
+  <div class="img-container1"><img src="./img/logo-vet.png"></div> <!-- logo upper-right corner -->
+  <div class="img-container2"><img src="./img/logo-ucm.png"></div> <!-- logo lower-left corner -->
   <div id="clickLabel" class="click-label"></div> <!-- Label that appears when clicking on an element -->
-  <div id="infoBox" class="info-box"></div>
-  <div class="buttons"> <!--Estos son los botones que salen a la dch de la pantalla -->
-    <button class="showButton" id="key0" onclick="showInfo()">INFORMACIONES</button>
-    <button class="showButton" id="keyH1" onclick="showAndHide('H1', 'keyH1')">Humero</button>
-    <button class="showButton" id="keyH2" onclick="showAndHide('H2', 'keyH2')">Radio</button>
-    <button class="showButton" id="keyH3" onclick="showAndHide('H3', 'keyH3')">Ulna/Cubito</button>
-    <button class="showButton" id="keyH4" onclick="showAndHide('H4', 'keyH4')">Hueso sesamoideo del músculo supinador</button>
-    <button class="showButton" id="keyL1" onclick="showAndHide('L1', 'keyL1')">Ligamento anular del radio</button>
-    <button class="showButton" id="keyL2" onclick="showAndHide('L2', 'keyL2')">Ligamento colateral lateral</button>
-    <button class="showButton" id="keyL4" onclick="showAndHide('L4', 'keyL4')">Ligamento colateral medial</button>
-    <button class="showButton" id="keyL6" onclick="showAndHide('L6', 'keyL6')">Ligamento del olécranon</button>
-    <button class="showButton" id="keyL7" onclick="showAndHide('L7', 'keyL7')">Ligamento interóseo</button>
-    <button class="showButton" id="keyL8" onclick="showAndHide('L8', 'keyL8')">Ligamento oblicuo</button>
-    <button class="showButton" id="keyM1" onclick="showAndHide('M1', 'keyM1')">Músculo pronador redondo</button>
-    <button class="showButton" id="keyM2" onclick="showAndHide('M2', 'keyM2')">Músculo supinador</button>
-    <button class="showButton" id="keyN1" onclick="showAndHide('N1', 'keyN1')">Nervio mediano</button>
-    <button class="showButton" id="keyN2" onclick="showAndHide('N2', 'keyN2')">Nervio radial</button>
-    <button class="showButton" id="keyN3" onclick="showAndHide('N3', 'keyN3')">Nervio ulnar/cubital</button>
-    <button class="showButton" id="keyT1" onclick="showAndHide('T1', 'keyT1')">Tendón del músculo bíceps braquial</button>
-    <button class="showButton" id="keyT2" onclick="showAndHide('T2', 'keyT2')">Tendón del músculo braquial</button>
+  <div id="infoBox" class="info-box"></div> <!-- Info box -->
+
+  <div class="buttons">
+    <button class="showButton1" id="keyI1" onclick="showInfo()">INSTRUCCIONES</button>
+    <button class="showButton1" id="keyI2" onclick="showBrujula('B0', 'keyI2')">BRUJULA</button>
+    <button class="showButton2" id="keyH1" onclick="showAndHide('H1', 'keyH1')">Humero</button>
+    <button class="showButton2" id="keyH2" onclick="showAndHide('H2', 'keyH2')">Radio</button>
+    <button class="showButton2" id="keyH3" onclick="showAndHide('H3', 'keyH3')">Ulna/Cubito</button>
+    <button class="showButton2" id="keyH4" onclick="showAndHide('H4', 'keyH4')">Hueso sesamoideo del músculo supinador</button>
+    <button class="showButton2" id="keyL1" onclick="showAndHide('L1', 'keyL1')">Ligamento anular del radio</button>
+    <button class="showButton2" id="keyL2" onclick="showAndHide('L2', 'keyL2')">Ligamento colateral lateral</button>
+    <button class="showButton2" id="keyL3" onclick="showAndHide('L3', 'keyL3')">Ligamento colateral medial</button>
+    <button class="showButton2" id="keyL4" onclick="showAndHide('L4', 'keyL4')">Ligamento del olécranon</button>
+    <button class="showButton2" id="keyL5" onclick="showAndHide('L5', 'keyL5')">Ligamento interóseo</button>
+    <button class="showButton2" id="keyL6" onclick="showAndHide('L6', 'keyL6')">Ligamento oblicuo</button>
+    <button class="showButton2" id="keyM1" onclick="showAndHide('M1', 'keyM1')">Músculo pronador redondo</button>
+    <button class="showButton2" id="keyM2" onclick="showAndHide('M2', 'keyM2')">Músculo supinador</button>
+    <button class="showButton2" id="keyN1" onclick="showAndHide('N1', 'keyN1')">Nervio mediano</button>
+    <button class="showButton2" id="keyN2" onclick="showAndHide('N2', 'keyN2')">Nervio radial</button>
+    <button class="showButton2" id="keyN3" onclick="showAndHide('N3', 'keyN3')">Nervio ulnar/cubital</button>
+    <button class="showButton2" id="keyT1" onclick="showAndHide('T1', 'keyT1')">Tendón del músculo bíceps braquial</button>
+    <button class="showButton2" id="keyT2" onclick="showAndHide('T2', 'keyT2')">Tendón del músculo braquial</button>
   </div>
 
-  <div class="img-container2"> <!-- logo esquina -->
-    <img src="./img/logo-ucm.png">
-  </div>
-
-  <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.5.1.js"></script>
+  <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js"></script>
   <script>
-    const model = '213d6969b9dd4fdfafeb3be25e15fc6d'; // Modelo de referencia a Sketchfab,este fichero cuando lo abres irá al modelo de ese código
+    const model = '88a9313df4d743feb4d231577fa28a20'; // Sketchfab 3D model ID
 
-    const filteredNodes = {}; // Objeto para guardar nombres de nodos, y si se debe mostrar o no. Ejemplo --> { "A" : { show: true, instanceId: 4} }
-    let apiRef; // Referencia a la api, para poder llamarla fuera del evetListener
+    const filteredNodes = {}; // Object to store nodes names and "show" variable --> { "A" : { show: true, instanceId: 4} }
+    let apiRef; // Clone to variable "api", so it can be called aoutside Sketchfab
 
-    //INICIO Sketchfab
-    //Asi se llama a la versión de api que esté actualmente
+    //BEGIN Sketchfab
     iframe = document.getElementById('api-frame');
     client = new Sketchfab( iframe);
 
@@ -58,8 +56,7 @@
     },
 
     success = function (api) {
-      apiRef = api; //Aquí ya estamos nombrando a la variable creada por nosotros
-                    //para poder usarla fuera de lo de Sketchfab
+      apiRef = api; // set "apiRef" clone variable, so it can be used outside Sketchfab
       api.start();
       // Wait for viewer to be ready
       api.addEventListener('viewerready', function () {
@@ -71,7 +68,7 @@
                 //alert(nodes[prop].instanceID+" : "+nodes[prop].name+" : "+nodes[prop].nodeMask+" : "+nodes[prop].type+" : "+nodes[prop].localMatrix+" ; "+nodes[prop].worldMatrix);
                 if (nodes[ prop ].type === "MatrixTransform") { //filters only nodes with MatrixTransform
                   const name = nodes[ prop ].name;
-                  filteredNodes[name] = {   //Aquí va rellenando nuestro objeto creado arriba
+                  filteredNodes[name] = {   // Filling the object with all objects IDs and "show"
                     show: true,
                     instanceId : nodes[prop].instanceID
                   };
@@ -88,22 +85,21 @@
           // Display a label when click on an object
           api.addEventListener('click', function(info) {
 
+            // Hide any label when click in empty background
             if (!info || !info.instanceID) {
               hideLabel();
               return;
             }
 
-            if (!onAnnotation) {                   // Display the label if the mouse is not already on an Annotation
+            // Display the label if the mouse is not already on an Annotation
+            if (!onAnnotation) {
               // Coordinates & nodeName of the click inside the viewer
               const x = info.position2D[0];
               const y = info.position2D[1];
               const nodeName = nodes[info.instanceID].name.split('_')[0]; // When the node name is composed, keep only the first label separated by "_"
               // Page coordinates
               const rect = iframe.getBoundingClientRect();
-
-              if (nodeName == "L3") {showLabel("Ligamento colateral lateral", rect.left + x, rect.top + y);}
-              else if (nodeName == "L5") {showLabel("Ligamento colateral medial", rect.left + x, rect.top + y);}
-              else {showLabel(document.getElementById('key' + nodeName).innerHTML, rect.left + x, rect.top + y);}
+              showLabel(document.getElementById('key' + nodeName).innerHTML, rect.left + x, rect.top + y);
             }
 
           });
@@ -112,6 +108,21 @@
           api.addEventListener('camerastart', function() {
             hideLabel();
           });
+
+          // Loop every 0.1 sec and turn the labels to face towards the viewer
+          setInterval(function() {
+            api.getCameraLookAt(function(err, camera) {
+              var Px = camera.position[0];
+              var Py = camera.position[1];
+              var Tx = camera.target[0];
+              var Ty = camera.target[1];
+              var azimuth = -Math.atan2(Py-Ty, Px-Tx);
+              api.rotate(filteredNodes["B1"].instanceId, [azimuth, 0, 0, 1], {duration: 0, easing: 'easeOutQuad'});
+              api.rotate(filteredNodes["B2"].instanceId, [azimuth, 0, 0, 1], {duration: 0, easing: 'easeOutQuad'});
+              api.rotate(filteredNodes["B3"].instanceId, [azimuth, 0, 0, 1], {duration: 0, easing: 'easeOutQuad'});
+              api.rotate(filteredNodes["B4"].instanceId, [azimuth, 0, 0, 1], {duration: 0, easing: 'easeOutQuad'});
+            });
+          }, 100); // time interval = 100 ms
 
         });
       });
@@ -131,7 +142,6 @@
 
     function showLabel(text, x, y) {
       const label = document.getElementById('clickLabel');
-
       label.textContent = text;
       label.style.left = x + 'px';
       label.style.top = y + 'px';
@@ -142,29 +152,32 @@
       document.getElementById('clickLabel').style.display = 'none';
     }
 
-    // Funciones Propias
-    //creadas para solo tener que llamarlas desde el .HTML
+    // Functions to be called from .HTML
+
+    // Show/Hide object, including circle-labels connected to that object
+    // Circle-label index starts from "0" (= label 1)
     function showAndHide(nodeName, buttonId) {
       const btn = document.getElementById(buttonId);
       filteredNodes[nodeName].show = !filteredNodes[nodeName].show;
 
       if (filteredNodes[nodeName].show) {
-        btn.classList.replace("hideButton","showButton");
+        btn.classList.replace("hideButton","showButton2");
         apiRef.show(filteredNodes[nodeName].instanceId)
         if (nodeName == "H1") {apiRef.showAnnotation(0); apiRef.showAnnotation(1);} //Humero(H1): show annotations 1 & 2
-        if (nodeName == "H3") {apiRef.showAnnotation(2);} //Ulna/Cubito(H3): show annotaion 3
-        if (nodeName == "L2") {apiRef.show(filteredNodes["L3"].instanceId); apiRef.showAnnotation(5); apiRef.showAnnotation(6);} //L2: show also L3 and annotation 6 & 7
-        if (nodeName == "L4") {apiRef.show(filteredNodes["L5"].instanceId); apiRef.showAnnotation(3); apiRef.showAnnotation(4);} //L4: show also L5 and annotations 4 & 5
+        if (nodeName == "H3") {apiRef.showAnnotation(2);}                           //Ulna/Cubito(H3): show annotation 3
+        if (nodeName == "L2") {apiRef.showAnnotation(3); apiRef.showAnnotation(4);} //L2: show annotation 4 & 5
+        if (nodeName == "L3") {apiRef.showAnnotation(5); apiRef.showAnnotation(6);} //L4: show annotations 6 & 7
       } else {
-        btn.classList.replace("showButton", "hideButton");
+        btn.classList.replace("showButton2", "hideButton");
         apiRef.hide(filteredNodes[nodeName].instanceId)
         if (nodeName == "H1") {apiRef.hideAnnotation(0); apiRef.hideAnnotation(1);} //Humero(H1): hide annotations 1 & 2
-        if (nodeName == "H3") {apiRef.hideAnnotation(2);} //Ulna/Cubito(H3): hide annotaion 3
-        if (nodeName == "L2") {apiRef.hide(filteredNodes["L3"].instanceId); apiRef.hideAnnotation(5); apiRef.hideAnnotation(6);} //L2: hide also L3 and annotation 6 & 7
-        if (nodeName == "L4") {apiRef.hide(filteredNodes["L5"].instanceId); apiRef.hideAnnotation(3); apiRef.hideAnnotation(4);} //L4: hide also L5 and annotations 4 & 5
+        if (nodeName == "H3") {apiRef.hideAnnotation(2);}                           //Ulna/Cubito(H3): hide annotation 3
+        if (nodeName == "L2") {apiRef.hideAnnotation(3); apiRef.hideAnnotation(4);} //L2: hide annotation 4 & 5
+        if (nodeName == "L3") {apiRef.hideAnnotation(5); apiRef.hideAnnotation(6);} //L4: hide annotations 6 & 7
       };
     };
 
+    // Show panel with info and instructions
     function showInfo() {
       if (!document.getElementById('myinfoBox')) {
         const infoBox = document.createElement('div');
@@ -181,7 +194,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             z-index: 99999;
           ">
-          <textarea rows="12" cols="80" style="overflow:hidden; resize:none; border: 1px solid #aaa;">
+          <textarea rows="18" cols="90" style="overflow:hidden; resize:none; border: 1px solid #aaa;">
 
   Modelo 3D "Articulación del codo"
   Facultad de Veterinaria - Universidad Complutense de Madrid
@@ -194,6 +207,12 @@
   - doble clic en un elemento: lo convierte en el punto de pivote del modelo
   - botones del menú: encienden/apagan el elemento indicado
 
+  Los círculos numerados muestran etiquetas específicas haciendo clic en ellos.
+  Se gestionan también con el menú "Select an annotation" en el borde inferior de
+  la pantalla. En ese menú:
+  - se pueden apagar o encender todos los círculos con la opción "Hide/Show annotations"
+  - se puede seleccionar una etiqueta específica buscandola en la lista despegable
+
             </textarea>
             <br>
             <button id="closeBtn">Cerrar</button>
@@ -203,6 +222,27 @@
         document.body.appendChild(infoBox);
         document.getElementById('closeBtn').onclick = () => infoBox.remove();
       }
+    }
+
+    // Show/Hide the "brujula" and its labels
+    function showBrujula(nodeName, buttonId) {
+      const btn = document.getElementById(buttonId);
+      filteredNodes[nodeName].show = !filteredNodes[nodeName].show;
+      if (filteredNodes[nodeName].show) {
+        btn.classList.replace("hideButton","showButton1");
+        apiRef.show(filteredNodes["B0"].instanceId)
+        apiRef.show(filteredNodes["B1"].instanceId)
+        apiRef.show(filteredNodes["B2"].instanceId)
+        apiRef.show(filteredNodes["B3"].instanceId)
+        apiRef.show(filteredNodes["B4"].instanceId)
+      } else {
+        btn.classList.replace("showButton1", "hideButton");
+        apiRef.hide(filteredNodes["B0"].instanceId)
+        apiRef.hide(filteredNodes["B1"].instanceId)
+        apiRef.hide(filteredNodes["B2"].instanceId)
+        apiRef.hide(filteredNodes["B3"].instanceId)
+        apiRef.hide(filteredNodes["B4"].instanceId)
+      };
     }
 
   </script>
@@ -265,7 +305,11 @@
     }
 
     /* Para poder elegir el color del boton cuando se enciende */
-    .showButton {
+    .showButton1 {
+      background: #ff00ff;
+    }
+
+    .showButton2 {
       background: #1caad9;
     }
 
@@ -283,13 +327,12 @@
       font-weight: bold;
     }
 
-    #key0 {font-weight: bold; color: white; background: purple;}
     #closeBtn {font-weight: bold; color: black; background: white;}
 
     .click-label {
       position: absolute;
       display: none;
-      background: rgba(0,0,255,0.8);
+      background: rgba(28,170,217,0.8);
       color: white;
       padding: 6px 10px;
       border-radius: 4px;
