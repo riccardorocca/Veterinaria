@@ -234,22 +234,19 @@
 
     // Show/Hide the "brujula" and its labels
     function showBrujula(nodeName, buttonId) {
+      const nodes = ["B0", "B1", "B2", "B3", "B4"];
       const btn = document.getElementById(buttonId);
       filteredNodes[nodeName].show = !filteredNodes[nodeName].show;
       if (filteredNodes[nodeName].show) {
         btn.classList.replace("hideButton","showButton1");
-        apiRef.show(filteredNodes["B0"].instanceId)
-        apiRef.show(filteredNodes["B1"].instanceId)
-        apiRef.show(filteredNodes["B2"].instanceId)
-        apiRef.show(filteredNodes["B3"].instanceId)
-        apiRef.show(filteredNodes["B4"].instanceId)
+        nodes.forEach(function (node) {
+          apiRef.show(filteredNodes[node].instanceId)
+        });
       } else {
         btn.classList.replace("showButton1", "hideButton");
-        apiRef.hide(filteredNodes["B0"].instanceId)
-        apiRef.hide(filteredNodes["B1"].instanceId)
-        apiRef.hide(filteredNodes["B2"].instanceId)
-        apiRef.hide(filteredNodes["B3"].instanceId)
-        apiRef.hide(filteredNodes["B4"].instanceId)
+        nodes.forEach(function (node) {
+          apiRef.hide(filteredNodes[node].instanceId)
+        });
       };
     }
 
